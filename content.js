@@ -52,7 +52,14 @@ window.MAI_CONTENT = {
       links: { scholar: "https://scholar.google.com/citations?user=edPVJ2sAAAAJ", github: "https://github.com/cgt00better-a11y" },
     },
     // Incoming master's students and interns (names supplied by the group, 2026-10).
-    { id: "yueqing-xing", en: "Yueqing Xing", zh: "邢越卿", role: "Master", intake: 2027, institution: ["Southeast University", "东南大学"], photo: "assets/people/yueqing-xing.jpg", links: {} },
+    {
+      id: "yueqing-xing", en: "Yueqing Xing", zh: "邢越卿", role: "Master", intake: 2027,
+      institution: ["Southeast University", "东南大学"],
+      interests: ["RecSys · Matrix completion · UQ", "推荐系统 · 矩阵补全 · 不确定性量化"],
+      note: ["Undergraduate in Cybersecurity, Nanjing University of Science and Technology (2027)", "南京理工大学网络空间安全专业本科（2027 届）"],
+      photo: "assets/people/yueqing-xing.jpg",
+      links: { homepage: "https://xingyueqing1-source.github.io/", scholar: "https://scholar.google.com/citations?user=F9wLIu8AAAAJ", github: "https://github.com/xingyueqing1-source" },
+    },
     {
       id: "yukai-wu", en: "Yukai Wu", zh: "吴钰恺", role: "Master", intake: 2027,
       institution: ["Southeast University", "东南大学"],
@@ -357,7 +364,7 @@ window.MAI_CONTENT = {
           papers: ["tors-aspect", "sagcn"],
         },
       ],
-      members: ["enhao-cheng", "wenxiang-sun"],
+      members: ["enhao-cheng", "yueqing-xing", "wenxiang-sun"],
     },
   ],
 
