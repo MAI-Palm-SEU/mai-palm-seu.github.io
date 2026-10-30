@@ -26,7 +26,7 @@ window.MAI_CONTENT = {
     {
       id: "lifan-zheng", en: "Lifan Zheng", zh: "郑力凡", role: "PhD", since: 2026,
       institution: ["Southeast University", "东南大学"],
-      interests: ["LLMs · Agents · Social simulation", "大语言模型 · 智能体 · 社会模拟"],
+      interests: ["LLMs · Agents · Embodied AI", "大语言模型 · 智能体 · 具身智能"],
       photo: "assets/people/lifan-zheng.jpg",
       links: { homepage: "https://z1ivan.github.io/", scholar: "https://scholar.google.com/citations?user=GDaqEpYAAAAJ", github: "https://github.com/z1ivan" },
     },
@@ -47,7 +47,7 @@ window.MAI_CONTENT = {
     {
       id: "guotao-chen", en: "Guotao Chen", zh: "陈国涛", role: "Master", since: 2025,
       institution: ["Southeast University", "东南大学"],
-      interests: ["Large language models", "大语言模型"],
+      interests: ["LLMs · Embodied AI", "大语言模型 · 具身智能"],
       photo: "assets/people/guotao-chen.jpg",
       links: { scholar: "https://scholar.google.com/citations?user=edPVJ2sAAAAJ", github: "https://github.com/cgt00better-a11y" },
     },
