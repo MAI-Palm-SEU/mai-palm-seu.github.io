@@ -1,4 +1,4 @@
-// Writes the static HTML pages of the MAI Group site from content.js.
+// Writes the static HTML pages of the MAI Lab site from content.js.
 // Usage, from the repository root: node tools/build-pages.js   (or: node build-pages.js <repo dir>)
 // Edit this file, not the generated HTML: running it overwrites all seven pages.
 const fs = require("fs");
@@ -84,7 +84,7 @@ function header(active) {
   return `    ${T("a", "Skip to content", "跳转到正文", 'href="#main" class="skip-link"')}
     <header class="site-header">
       <div class="container header-inner">
-        <a href="index.html" class="brand" aria-label="MAI Group home">MAI Group<span class="brand-dot" aria-hidden="true">.</span></a>
+        <a href="index.html" class="brand" aria-label="MAI Lab home">MAI Lab</a>
         <nav class="main-nav" id="main-nav" aria-label="Main navigation">
           ${nav}
         </nav>
@@ -116,7 +116,7 @@ const footer = `    <footer class="site-footer">
         </div>
       </div>
       <div class="container footer-bottom">
-        <p>© <span id="current-year">2026</span> MAI Group</p>
+        <p>© <span id="current-year">2026</span> MAI Lab</p>
         ${T("a", "Back to top ↑", "返回顶部 ↑", 'href="#"')}
       </div>
     </footer>
@@ -204,7 +204,7 @@ const preview = MEMBERS.filter((m) => m.role !== "Alumni")
   .join("\n");
 
 page("index.html", {
-  title: "Multimodal Autonomous Intelligence · MAI Group",
+  title: "Multimodal Autonomous Intelligence · MAI Lab",
   active: "index",
   bodyPage: "index",
   main: `      <section class="hero">
@@ -298,7 +298,7 @@ ${TOPICS.map((topic) => `            <li><a class="card" href="#${topic.id}">${T
           </ol>`;
 
 page("research.html", {
-  title: "Research · MAI Group",
+  title: "Research · MAI Lab",
   active: "research",
   bodyPage: "research",
   main: `${pageHero(["Research", "研究方向"], ["Our research is organized around three connected directions: perception and understanding, semantic reasoning, and autonomous decision-making.", "我们的研究围绕三个相互支撑的方向展开：感知与理解、语义推理、自主决策。"])}
@@ -356,7 +356,7 @@ const moreDirections = MORE_DIRECTIONS.map(
             </li>`,
 ).join("\n");
 page("projects.html", {
-  title: "Projects · MAI Group",
+  title: "Projects · MAI Lab",
   active: "projects",
   bodyPage: "projects",
   main: `${pageHero(["Projects", "研究项目"], ["Our projects address specific problems within the three research directions. Each project brings together related topics, publications, code, data and participating members.", "研究项目围绕三个方向中的具体问题展开。每个项目汇集相关课题、论文、代码、数据与参与成员，并标明所属研究方向。"])}
@@ -387,7 +387,7 @@ ${moreDirections}
 
 /* ---------- Project detail ---------- */
 page("project.html", {
-  title: "Project · MAI Group",
+  title: "Project · MAI Lab",
   active: "projects",
   bodyPage: "project",
   main: `      <div class="container"><div id="project-content"></div></div>`,
@@ -395,7 +395,7 @@ page("project.html", {
 
 /* ---------- Publications ---------- */
 page("publications.html", {
-  title: "Publications · MAI Group",
+  title: "Publications · MAI Lab",
   active: "publications",
   bodyPage: "publications",
   main: `${pageHero(["Publications", "研究成果"], ["Selected work by Prof. Fan Liu, together with publications co-authored with current group members. Browse by research direction or year; group members and alumni are highlighted in the author lists.", "展示刘帆教授的代表工作，以及与在读成员共同署名的成果。可按研究方向或年份浏览，作者列表突出显示课题组成员与已毕业成员。"])}
@@ -462,7 +462,7 @@ const HONORS = [
 ];
 
 page("people.html", {
-  title: "People · MAI Group",
+  title: "People · MAI Lab",
   active: "people",
   bodyPage: "people",
   main: `${pageHero(["People", "团队"], ["Meet the people behind our research.", "认识参与这些研究的老师与同学。"])}
@@ -537,7 +537,7 @@ const LOOK_FOR = [
   ["A solid foundation in English and mathematics", "具备扎实的英语和数学基础"],
 ];
 page("join.html", {
-  title: "Join us · MAI Group",
+  title: "Join us · MAI Lab",
   active: "join",
   bodyPage: "join",
   main: `${pageHero(["Join us", "加入我们"], ["If our research interests overlap with yours, we would be glad to hear from you. Our research framework and projects show what you would work on.", "如果你对我们的研究方向感兴趣，欢迎与我们交流。研究框架和研究项目两页介绍了你将参与的工作。"])}

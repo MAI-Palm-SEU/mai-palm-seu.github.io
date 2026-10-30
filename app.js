@@ -184,7 +184,7 @@
       $("#project-content").innerHTML = `<section class="project-not-found"><h1>${tr("Project not found", "未找到该项目")}</h1><p>${tr("The project may have moved. Browse all projects instead.", "该项目可能已调整，请查看全部项目。")}</p><a href="projects.html" class="button">${tr("All projects", "全部项目")}</a></section>`;
       return;
     }
-    document.title = `${name(pr)} · MAI Group`;
+    document.title = `${name(pr)} · MAI Lab`;
     const others = projects.filter((x) => x.id !== pr.id);
     $("#project-content").innerHTML = `<article class="project-detail">
       <a href="projects.html" class="breadcrumb">← ${tr("All projects", "全部项目")}</a>

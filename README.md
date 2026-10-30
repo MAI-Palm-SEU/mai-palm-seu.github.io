@@ -1,4 +1,4 @@
-# MAI Group 网站
+# MAI Lab 网站
 
 Multimodal Autonomous Intelligence · PALM Lab, Southeast University
 
