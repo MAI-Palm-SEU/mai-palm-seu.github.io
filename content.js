@@ -33,9 +33,9 @@ window.MAI_CONTENT = {
     {
       id: "enhao-cheng", en: "Enhao Cheng", zh: "程恩浩", role: "PhD", since: 2026,
       institution: ["Southeast University", "东南大学"],
-      interests: ["Generative RecSys · Agents", "生成式推荐 · 智能体"],
+      interests: ["LLMs · Generative RecSys", "大语言模型 · 生成式推荐"],
       photo: "assets/people/enhao-cheng.jpg",
-      links: { scholar: "https://scholar.google.com/citations?user=Cou2xGUAAAAJ" },
+      links: { homepage: "https://chehaoa.github.io/", scholar: "https://scholar.google.com/citations?user=Cou2xGUAAAAJ", github: "https://github.com/chehaoa" },
     },
     {
       id: "yang-tian", en: "Yang Tian", zh: "田阳", role: "PhD", since: 2026,
