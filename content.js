@@ -1,351 +1,827 @@
-/* Curated public records; provenance is documented in SOURCES.md. */
+/* Curated public records; provenance is documented in SOURCES.md.
+   Every bilingual value is written as [English, Chinese].
+   - members:  everyone in the group, including incoming students, interns and alumni. The people page,
+               the home-page group preview and the member report are generated from this list, and these
+               names are bold in author lists. Fields:
+                 role       Faculty | PhD | Master | Undergrad | Intern (from other universities) | Alumni
+                 since      year the person joined the group (null = still to confirm)
+                 intake     for incoming students, the admission year
+                 degree/now alumni only: degree earned and year (member folder only); current position (shown)
+                 institution, note  kept for the member folder only; the site shows name, year, interests and links
+                 interests  short keywords that fit on one line of a people card (about 30 characters in English)
+                 links      homepage, scholar, github, orcid, profile (official page), email
+   - topics:   the three directions of the research framework plus applications.
+               Their ids are shared by research.html anchors, publication topics and project layers.
+   - projects: four broad research lines; each has themes (sub-directions with their papers, newest first)
+               and an explicit member list. A theme with no papers yet is shown as ongoing.
+   - papers:   every paper with Fan Liu as an author, newest first. `group` is a sub-heading inside a topic. */
 window.MAI_CONTENT = {
-  "members": [
+  members: [
     {
-      "id": "lifan-zheng",
-      "en": "Lifan Zheng",
-      "zh": "郑力凡",
-      "role": "PhD",
-      "institution": [
-        "Southeast University",
-        "东南大学"
+      id: "fan-liu", en: "Fan Liu", zh: "刘帆", role: "Faculty", since: null,
+      institution: ["Southeast University", "东南大学"],
+      photo: "assets/fan-liu-official.png",
+      links: { homepage: "https://liufancs.github.io/", profile: "https://cs.seu.edu.cn/liufan/main.htm", github: "https://github.com/liufancs", orcid: "https://orcid.org/0000-0002-4547-3982", email: "liufan@seu.edu.cn" },
+    },
+    {
+      id: "lifan-zheng", en: "Lifan Zheng", zh: "郑力凡", role: "PhD", since: 2026,
+      institution: ["Southeast University", "东南大学"],
+      interests: ["LLMs · Agents · Social simulation", "大语言模型 · 智能体 · 社会模拟"],
+      photo: "assets/people/lifan-zheng.jpg",
+      links: { homepage: "https://z1ivan.github.io/", scholar: "https://scholar.google.com/citations?user=GDaqEpYAAAAJ", github: "https://github.com/z1ivan" },
+    },
+    {
+      id: "enhao-cheng", en: "Enhao Cheng", zh: "程恩浩", role: "PhD", since: 2026,
+      institution: ["Southeast University", "东南大学"],
+      interests: ["Generative RecSys · Agents", "生成式推荐 · 智能体"],
+      photo: "assets/people/enhao-cheng.jpg",
+      links: { scholar: "https://scholar.google.com/citations?user=Cou2xGUAAAAJ" },
+    },
+    {
+      id: "yang-tian", en: "Yang Tian", zh: "田阳", role: "PhD", since: 2026,
+      institution: ["Shandong University", "山东大学"],
+      interests: ["Multimodal RAG · Retrieval agents", "多模态 RAG · 检索智能体"],
+      photo: "assets/people/yang-tian.jpg",
+      links: { homepage: "https://tyangjn.github.io/", scholar: "https://scholar.google.com/citations?user=4n4O7YAAAAAJ", github: "https://github.com/TyangJN" },
+    },
+    {
+      id: "guotao-chen", en: "Guotao Chen", zh: "陈国涛", role: "Master", since: 2025,
+      institution: ["Southeast University", "东南大学"],
+      interests: ["Large language models", "大语言模型"],
+      photo: "assets/people/guotao-chen.jpg",
+      links: { scholar: "https://scholar.google.com/citations?user=edPVJ2sAAAAJ", github: "https://github.com/cgt00better-a11y" },
+    },
+    // Incoming master's students and interns (names supplied by the group, 2026-10).
+    { id: "yueqing-xing", en: "Yueqing Xing", zh: "邢越卿", role: "Master", intake: 2027, institution: ["Southeast University", "东南大学"], photo: null, links: {} },
+    {
+      id: "yukai-wu", en: "Yukai Wu", zh: "吴钰恺", role: "Master", intake: 2027,
+      institution: ["Southeast University", "东南大学"],
+      interests: ["Memory · RL · Long-horizon agents", "记忆 · 强化学习 · 长程智能体"],
+      note: ["Undergraduate: Beijing Jiaotong University", "本科：北京交通大学"],
+      photo: "assets/people/yukai-wu.jpg",
+      links: { homepage: "https://mustbeasaltyfish.github.io/" },
+    },
+    {
+      id: "zhiyu-zeng", en: "Zhiyu Zeng", zh: "曾沚玉", role: "Master", intake: 2027,
+      institution: ["Southeast University", "东南大学"],
+      note: ["Undergraduate: Central South University", "本科：中南大学"],
+      photo: "assets/people/zhiyu-zeng.jpg",
+      links: { github: "https://github.com/AMHOH" },
+    },
+    // Undergraduate students.
+    { id: "yixuan-zhang", en: "Yixuan Zhang", zh: "张奕轩", role: "Undergrad", since: 2026, interests: ["Multi-agent systems", "多智能体"], photo: "assets/people/yixuan-zhang.jpg", links: {} },
+    { id: "xintong-lu", en: "Xintong Lu", zh: "卢欣童", role: "Undergrad", since: 2026, interests: ["Memory · Long-horizon agents", "记忆 · 长程智能体"], photo: "assets/people/xintong-lu.jpg", links: {} },
+    { id: "xinyi-li", en: "Xinyi Li", zh: "李欣怡", role: "Undergrad", since: 2026, interests: ["Memory · Long-horizon agents", "记忆 · 长程智能体"], photo: "assets/people/xinyi-li.jpg", links: {} },
+    {
+      id: "haoran-jing", en: "Haoran Jing", zh: "景浩然", role: "Undergrad", since: 2026,
+      institution: ["Southeast University", "东南大学"],
+      interests: ["Multimodality", "多模态"],
+      note: ["Undergraduate in AI, Chien-Shiung Wu College, Southeast University (since 2025)", "东南大学吴健雄学院人工智能专业本科生（2025 级）"],
+      photo: "assets/people/haoran-jing.jpg",
+      links: { homepage: "https://jiabo12.github.io/", github: "https://github.com/jiabo12" },
+    },
+    // Research interns.
+    {
+      id: "wenxiang-sun", en: "Wenxiang Sun", zh: "孙文翔", role: "Intern", since: 2026,
+      institution: ["Nanjing Agricultural University", "南京农业大学"],
+      interests: ["Generative RecSys · LLMs", "生成式推荐 · 大语言模型"],
+      note: ["Third-year undergraduate in Data Science, College of AI, Nanjing Agricultural University", "南京农业大学人工智能学院数据科学与大数据技术专业本科三年级"],
+      photo: "assets/people/wenxiang-sun.jpg",
+      links: { homepage: "https://swx0v0.github.io/", github: "https://github.com/swx0v0" },
+    },
+    { id: "bingzong-liu", en: "Bingzong Liu", zh: "刘秉宗", role: "Intern", since: 2026, institution: ["Xidian University", "西安电子科技大学"], photo: "assets/people/bingzong-liu.jpg", links: {} },
+    // Alumni.
+    {
+      id: "zhenyang-li", en: "Zhenyang Li", zh: "李振阳", role: "Alumni",
+      degree: ["Ph.D. (Shandong University), 2024", "山东大学博士，2024"],
+      now: ["Research Fellow @ CityU", "香港城市大学 Research Fellow"],
+      photo: "assets/people/zhenyang-li.jpg",
+      links: { homepage: "https://sdlzy.github.io/", scholar: "https://scholar.google.com/citations?user=1y3RxHMAAAAJ" },
+    },
+    {
+      id: "huilin-chen", en: "Huilin Chen", zh: "陈慧临", role: "Alumni",
+      degree: null,
+      now: ["Ph.D. student @ HFUT", "合肥工业大学博士生"],
+      photo: null,
+      links: { github: "https://github.com/HuilinChenJN", scholar: "https://scholar.google.com/citations?user=vWoJdWEAAAAJ" },
+    },
+  ],
+
+  topics: [
+    {
+      id: "perception",
+      step: "01",
+      en: "Multimodal understanding",
+      zh: "多模态理解",
+      problem: ["Perception & understanding", "感知理解"],
+      intro: [
+        "Learning from images, video, text and user behavior: fusing and disentangling modalities, and staying robust when a modality is missing or labels are noisy.",
+        "从图像、视频、文本与用户行为中学习：多模态的融合与解耦，以及模态缺失、标签噪声下的稳健性。",
       ],
-      "interests": [
-        "LLMs · AI agents · Social simulation",
-        "大语言模型 · 智能体 · 社会模拟"
+      groups: [
+        { id: "representation", en: "Multimodal representation and recommendation", zh: "多模态表征与推荐" },
+        { id: "visual", en: "Visual understanding and learning", zh: "视觉理解与学习" },
       ],
-      "photo": "assets/people/lifan-zheng.jpg",
-      "links": [
+    },
+    {
+      id: "reasoning",
+      step: "02",
+      en: "Foundation models",
+      zh: "基础模型",
+      problem: ["Semantic reasoning", "语义推理"],
+      intro: [
+        "Making large models reason with knowledge they can trust: reconciling internal and retrieved knowledge, and reading user-written text with language models.",
+        "让大模型基于可信的知识推理：协调模型内部知识与检索知识，并用语言模型理解用户撰写的文本。",
+      ],
+      groups: [
+        { id: "knowledge", en: "Knowledge-grounded multimodal models", zh: "知识增强的多模态模型" },
+        { id: "semantics", en: "Language-model semantics", zh: "语言模型语义理解" },
+      ],
+    },
+    {
+      id: "decision",
+      step: "03",
+      en: "Autonomous intelligence",
+      zh: "自主智能",
+      problem: ["Autonomous decision-making", "自主决策"],
+      intro: [
+        "Agents that plan, search and act over long horizons, from multimodal agentic retrieval and evidence-grounded generation to robot policies that turn instructions into actions.",
+        "能够长程规划、检索与行动的智能体：从多模态智能体检索、基于证据的生成，到把指令转化为动作的机器人策略。",
+      ],
+      groups: [],
+    },
+    {
+      id: "applications",
+      step: "",
+      en: "Retrieval and recommendation",
+      zh: "检索与推荐",
+      problem: ["Applications", "应用"],
+      intro: [
+        "Where the group's methods have been tested longest: graph models, multiple behavior types, and cross-domain and privacy-preserving settings.",
+        "团队方法长期检验的应用场景：图模型、多类型行为，以及跨域与隐私保护场景。",
+      ],
+      groups: [
+        { id: "cf", en: "Collaborative filtering and graph models", zh: "协同过滤与图模型" },
+        { id: "multibehavior", en: "Multi-behavior recommendation", zh: "多行为推荐" },
+        { id: "crossdomain", en: "Cross-domain and privacy-preserving recommendation", zh: "跨域与隐私保护推荐" },
+      ],
+    },
+  ],
+
+  projects: [
+    {
+      id: "multimodal-models",
+      en: "Multimodal Foundation Models",
+      zh: "多模态大模型",
+      layers: ["perception", "reasoning"],
+      since: 2023,
+      until: null,
+      image: "assets/research/core-teaser.jpg",
+      imageCaption: ["Two kinds of knowledge inconsistency studied in CoRe-MMRAG.", "CoRe-MMRAG 研究的两类知识不一致。"],
+      imageSource: "https://github.com/iLearn-Lab/ACL25-COREMMRAG",
+      question: [
+        "How can multimodal models understand images, video and text, and reason with knowledge they can trust?",
+        "多模态大模型如何理解图像、视频与文本，并基于可信的知识进行推理？",
+      ],
+      summary: [
+        "Knowledge-grounded multimodal reasoning, visual understanding with vision-language models, and robust learning from imperfect data.",
+        "知识增强的多模态推理、基于视觉语言大模型的视觉理解，以及从不完美数据中稳健地学习。",
+      ],
+      overview: [
         [
-          "Homepage",
-          "个人主页",
-          "https://z1ivan.github.io/"
+          "Large multimodal models can describe images and answer questions about them, but they still confuse what they remember with what they see, and they stumble on noisy data and unfamiliar settings. This project studies how such models perceive and reason, and what makes their answers trustworthy.",
+          "CoRe-MMRAG (ACL 2025) has a model answer from its own knowledge, select relevant visual and textual evidence, answer again from that evidence and reconcile the two. Earlier work teaches vision models to agree on where to look in visual commonsense reasoning (IEEE TMM), fuses modalities across layers for video question answering (ACM MM 2023), and draws on contextual cues from large vision-language models to detect human–object interactions (ACM MM 2025). Variational rectification inference (IJCV) learns from noisy labels, and NMVM (KDD 2026) brings language-model embeddings to short-text clustering.",
         ],
         [
-          "Scholar",
-          "学术主页",
-          "https://scholar.google.com/citations?user=GDaqEpYAAAAJ"
-        ]
-      ]
+          "多模态大模型已经能够描述图像、回答问题，但仍会混淆记忆中的知识与眼前所见，在噪声数据和陌生场景下也容易出错。本项目研究这类模型如何感知与推理，以及怎样让它们的回答值得信赖。",
+          "CoRe-MMRAG（ACL 2025）先让模型基于自身知识作答，再筛选相关的视觉与文本证据、基于证据再次作答，最后协调两者。此前的工作让视觉模型在视觉常识推理中就「看哪里」达成一致（IEEE TMM），在视频问答中跨层融合多模态信息（ACM MM 2023），并借助视觉语言大模型提供的上下文线索检测人–物交互（ACM MM 2025）。变分校正推断（IJCV）用于带噪声标签的学习，NMVM（KDD 2026）把语言模型嵌入引入短文本聚类。",
+        ],
+      ],
+      themes: [
+        {
+          en: "Knowledge reconciliation and multimodal RAG", zh: "知识协调与多模态检索增强",
+          text: ["Reconciling what a model knows with what it retrieves from text and images.", "协调模型内部知识与从文本、图像中检索到的知识。"],
+          papers: ["core"],
+        },
+        {
+          en: "Visual understanding and reasoning", zh: "视觉理解与推理",
+          text: ["Visual commonsense reasoning, video question answering, and human–object interaction detection with vision-language models.", "视觉常识推理、视频问答，以及借助视觉语言大模型的人–物交互检测。"],
+          papers: ["hoi-lvlm", "vcr", "videoqa"],
+        },
+        {
+          en: "Robust visual learning", zh: "稳健的视觉学习",
+          text: ["Learning with noisy labels, open-set human body reenactment, and temporal state perception.", "带噪声标签的学习、开放集人体重演与时序状态感知。"],
+          papers: ["vri", "reenactment", "temporal-state"],
+        },
+        {
+          en: "Text semantics", zh: "文本语义理解",
+          text: ["Combining sparse word features with language-model embeddings to understand short texts.", "结合稀疏词特征与语言模型嵌入，理解短文本。"],
+          papers: ["nmvm"],
+        },
+      ],
+      members: ["yang-tian", "guotao-chen", "haoran-jing"],
     },
     {
-      "id": "enhao-cheng",
-      "en": "Enhao Cheng",
-      "zh": "程恩浩",
-      "role": "PhD",
-      "institution": [
-        "Southeast University",
-        "东南大学"
+      id: "autonomous-agents",
+      en: "Autonomous Agents",
+      zh: "自主智能体",
+      layers: ["decision"],
+      since: 2025,
+      until: null,
+      image: "assets/research/fig.jpg",
+      imageCaption: ["Retrieval-augmented factual image generation with ORIG.", "ORIG：检索增强的事实性图像生成。"],
+      imageSource: "https://github.com/iLearn-Lab/MM26-FIG",
+      question: [
+        "How can agents plan, remember and work together over long tasks, and act on their own in open environments?",
+        "智能体如何在长程任务中规划、记忆与协作，在开放环境中自主行动？",
       ],
-      "interests": [
-        "Generative recommendation · Agents",
-        "生成式推荐 · 智能体"
+      summary: [
+        "Agentic multimodal retrieval, memory for long-horizon tasks, and multi-agent systems and social simulation.",
+        "多模态智能体检索、面向长程任务的记忆，以及多智能体系统与社会模拟。",
       ],
-      "photo": "assets/people/enhao-cheng.jpg",
-      "links": [
+      overview: [
         [
-          "Scholar",
-          "学术主页",
-          "https://scholar.google.com/citations?user=Cou2xGUAAAAJ&hl=en"
-        ]
-      ]
-    },
-    {
-      "id": "yang-tian",
-      "en": "Yang Tian",
-      "zh": "田阳",
-      "role": "PhD",
-      "institution": [
-        "Shandong University",
-        "山东大学"
-      ],
-      "interests": [
-        "Multimodal retrieval agents · Multimodal RAG",
-        "多模态检索智能体 · 多模态 RAG"
-      ],
-      "photo": "assets/people/yang-tian.jpg",
-      "links": [
-        [
-          "Homepage",
-          "个人主页",
-          "https://tyangjn.github.io/"
+          "An autonomous agent has to do more than answer a single question. It plans over many steps, searches and reads, keeps track of what it has found, and sometimes works with other agents. This project studies the abilities that such long tasks require.",
+          "MM-ContextFold (ACM MM 2026) keeps an agent's plan in a persistent text-only context and sends image-dependent subtasks to short-lived branches, which fold their findings back as text. ORIG (ACM MM 2026) retrieves and filters text and image evidence from the open web before generating an image, and the accompanying FIG-Eval benchmark measures factuality. Ongoing work in the group studies memory and reinforcement learning for long-horizon agents, multi-agent collaboration, and social simulation with language-model agents.",
         ],
         [
-          "GitHub",
-          "GitHub",
-          "https://github.com/TyangJN"
-        ]
-      ]
+          "自主智能体要做的不只是回答一个问题：它需要多步规划、检索与阅读，记住已经发现的内容，有时还要与其他智能体协作。本项目研究这类长程任务所需要的能力。",
+          "MM-ContextFold（ACM MM 2026）用只含文本的持久上下文负责规划，把依赖图像的子任务交给临时分支处理，分支再把发现以文本形式折叠回主上下文。ORIG（ACM MM 2026）在生成图像前从开放网络检索并筛选文本与图像证据，配套的 FIG-Eval 基准用于评估生成结果的事实性。组内正在进行的工作包括：长程智能体的记忆与强化学习、多智能体协作，以及基于大语言模型智能体的社会模拟。",
+        ],
+      ],
+      themes: [
+        {
+          en: "Agentic retrieval and grounded generation", zh: "智能体检索与有据生成",
+          text: ["Agents that search across text and images over many rounds, and generation grounded in retrieved evidence.", "跨文本与图像多轮检索的智能体，以及以检索证据为依据的生成。"],
+          papers: ["contextfold", "fig"],
+        },
+        {
+          en: "Memory and long-horizon tasks", zh: "记忆与长程任务",
+          text: ["How agents keep, organize and use what they have seen over long tasks, and how reinforcement learning can train them to do so.", "智能体如何在长程任务中保存、组织和使用已获得的信息，以及如何用强化学习训练这种能力。"],
+          papers: [],
+        },
+        {
+          en: "Multi-agent systems and social simulation", zh: "多智能体与社会模拟",
+          text: ["Several agents working together, and language-model agents that simulate social behavior.", "多个智能体的协作，以及用大语言模型智能体模拟社会行为。"],
+          papers: [],
+        },
+      ],
+      members: ["lifan-zheng", "yang-tian", "yukai-wu", "yixuan-zhang", "xintong-lu", "xinyi-li"],
     },
     {
-      "id": "guotao-chen",
-      "en": "Guotao Chen",
-      "zh": "陈国涛",
-      "role": "Master",
-      "institution": [
-        "Southeast University",
-        "东南大学"
+      id: "embodied-intelligence",
+      en: "Embodied Intelligence",
+      zh: "具身智能",
+      layers: ["decision"],
+      since: 2026,
+      until: null,
+      image: "assets/research/metafine-sim.jpg",
+      imageCaption: ["A MetaFine simulation scene: a robot arm spelling a word with letter blocks.", "MetaFine 仿真场景：机械臂用字母积木拼词。"],
+      imageSource: "https://metafine.github.io/",
+      question: [
+        "How can a robot turn an instruction and what it sees into precise, reliable actions?",
+        "机器人如何把指令和所见转化为精确、可靠的动作？",
       ],
-      "interests": [
-        "Large language models",
-        "大语言模型"
+      summary: [
+        "Vision-language-action policies for fine-grained robot manipulation; first place in the MetaFine Open Competition at CoRL 2026.",
+        "面向细粒度机器人操作的视觉-语言-动作策略；获 CoRL 2026 MetaFine 公开赛第一名。",
       ],
-      "photo": null,
-      "links": [
+      overview: [
         [
-          "Scholar",
-          "学术主页",
-          "https://scholar.google.com/citations?user=edPVJ2sAAAAJ&hl=zh-CN"
-        ]
-      ]
-    }
+          "Fine-grained manipulation leaves little room for error: a robot has to ground the right object attribute, perceive local spatial structure precisely and move within physical constraints. The MetaFine benchmark evaluates these abilities separately, along instruction understanding, perception and controlled execution, which makes it possible to see where a policy fails.",
+          "For the MetaFine Open Competition (RoboFineMani Workshop, CoRL 2026), the group fine-tuned a separate π0.5 policy for each of the five tasks. Local evaluation exposed recurring grasping, pushing and insertion failures. The team revised the demonstrated motions and added expert continuations from states the policy actually reached, while keeping the nominal demonstrations in training, and compared checkpoints instruction by instruction so that a gain on one instruction could not hide a loss on another. The submission, MAI, ranked first overall with a score of 96.66.",
+        ],
+        [
+          "细粒度操作几乎不容出错：机器人需要找准物体的局部属性，精确感知局部空间结构，并在物理约束下完成动作。MetaFine 基准从指令理解、感知与动作执行三个方面分别评估这些能力，从而能看清策略在哪里失败。",
+          "在 MetaFine 公开赛（CoRL 2026 RoboFineMani Workshop）中，团队为五个任务分别微调了 π0.5 策略。本地评估暴露出反复出现的抓取、推动与插入失败；团队据此修改示范动作，并从策略实际到达的状态补充专家接续，同时保留原始示范参与训练；不同检查点按每条指令逐一比较，避免一条指令上的提升掩盖另一条上的退步。最终提交的 MAI 以 96.66 分获总成绩第一。",
+        ],
+      ],
+      themes: [
+        {
+          en: "Vision-language-action policies for fine-grained manipulation", zh: "视觉-语言-动作策略与细粒度操作",
+          text: ["Fine-tuning VLA policies for precise manipulation, and refining demonstrations by what evaluation reveals.", "为精细操作微调视觉-语言-动作策略，并依据评估暴露的问题改进示范。"],
+          papers: ["metafine"],
+        },
+      ],
+      members: ["lifan-zheng", "guotao-chen"],
+    },
+    {
+      id: "recommendation",
+      en: "Intelligent Recommendation",
+      zh: "智能推荐",
+      layers: ["perception", "applications"],
+      since: 2019,
+      until: null,
+      image: "assets/research/bipn.jpg",
+      imageCaption: ["Users interact with items through several behaviors; illustration from BIPN.", "用户通过多种行为与物品交互（图取自 BIPN）。"],
+      imageSource: "https://arxiv.org/abs/2404.18166",
+      question: [
+        "How can recommender systems understand users from images, text, behavior and language, and move from matching items to generating recommendations?",
+        "推荐系统如何从图像、文本、行为与语言中理解用户，并从匹配物品走向生成式推荐？",
+      ],
+      summary: [
+        "From multimodal representation and graph and multi-behavior modeling to recommendation with large language models.",
+        "从多模态表征、图与多行为建模，到大语言模型驱动的推荐。",
+      ],
+      overview: [
+        [
+          "Recommendation is where the group's methods have been tested longest. Items come with images, descriptions and reviews; users view, add to cart and buy; their preferences carry across domains. This project asks how these signals should enter a model of what a user wants and, with large language models, how recommendation can move from matching items to generating them.",
+          "MAML (ACM MM 2019), DMRL (IEEE TMM), SGFD (ACM MM 2023), MetaMMF (ACM TOIS), AD-DRL (ACM MM 2024) and I³-MRec (ACM MM 2025) build multimodal representations of users and items. IMP-GCN (WWW 2021), A²-GCN (IEEE TKDE) and ClusterGCF (ACM TOIS 2024) improve graph collaborative filtering, and MB-CGCN (WWW 2023), CRGCN (ACM TOIS 2023) and BIPN (SIGIR 2024) learn from several kinds of behavior together. With large language models, work in ACM TOIS 2025 and ACM TORS 2026 extracts and aligns the aspects users write about in reviews; ongoing work studies generative recommendation.",
+        ],
+        [
+          "推荐是团队方法检验时间最长的场景：物品带有图像、描述与评论；用户会浏览、加购、购买；偏好还会跨领域迁移。本项目研究这些信号应当如何进入用户偏好的建模，以及借助大语言模型，推荐如何从匹配物品走向生成。",
+          "MAML（ACM MM 2019）、DMRL（IEEE TMM）、SGFD（ACM MM 2023）、MetaMMF（ACM TOIS）、AD-DRL（ACM MM 2024）与 I³-MRec（ACM MM 2025）构建用户与物品的多模态表征。IMP-GCN（WWW 2021）、A²-GCN（IEEE TKDE）与 ClusterGCF（ACM TOIS 2024）改进图协同过滤，MB-CGCN（WWW 2023）、CRGCN（ACM TOIS 2023）与 BIPN（SIGIR 2024）同时利用多种行为。在大语言模型方面，ACM TOIS 2025 与 ACM TORS 2026 的工作从评论中提取并对齐用户关心的属性；生成式推荐方面的工作正在进行中。",
+        ],
+      ],
+      themes: [
+        {
+          en: "Multimodal recommendation", zh: "多模态推荐",
+          text: ["Modeling users and items from images, text and video: metric learning, disentanglement, distillation, dynamic fusion and missing modalities.", "从图像、文本与视频建模用户和物品：度量学习、解耦表征、特征蒸馏、动态融合与模态缺失。"],
+          papers: ["i3mrec", "addrl", "sgfd", "metammf", "lightgt", "mqmc", "dmrl", "maml"],
+        },
+        {
+          en: "Graph and multi-behavior recommendation", zh: "图与多行为推荐",
+          text: ["Graph collaborative filtering that respects user interests, item attributes and cluster structure, and models that learn from views, carts and purchases together.", "兼顾用户兴趣、物品属性与聚类结构的图协同过滤，以及同时利用浏览、加购、购买等多种行为的模型。"],
+          papers: ["uipl", "clustergcf", "bipn", "dcgcn", "mbcgcn", "crgcn", "cogcn", "fla", "disen-gnn", "imp-gcn", "a2gcn"],
+        },
+        {
+          en: "Cross-domain and privacy-preserving recommendation", zh: "跨域与隐私保护推荐",
+          text: ["Carrying user preferences across domains, and synthetic data that protects user privacy.", "跨领域迁移用户偏好，以及保护用户隐私的合成数据。"],
+          papers: ["ddcr", "dagcn", "upc-sdg"],
+        },
+        {
+          en: "Large language models and generative recommendation", zh: "大模型与生成式推荐",
+          text: ["Language models that read reviews for the aspects users care about; work on generative recommendation is ongoing.", "用语言模型从评论中读出用户关心的属性；生成式推荐方面的工作正在进行中。"],
+          papers: ["tors-aspect", "sagcn"],
+        },
+      ],
+      members: ["enhao-cheng", "wenxiang-sun"],
+    },
   ],
-  "topics": [
+
+  papers: [
     {
-      "id": "multimodal",
-      "en": "Multimodal understanding",
-      "zh": "多模态理解",
-      "description": [
-        "Learning from visual, textual, and behavioral signals, with a focus on representations and evidence across knowledge sources.",
-        "从视觉、文本与行为信号中学习，关注多模态表征和跨来源知识的理解与整合。"
+      id: "metafine",
+      short: "MetaFine (1st place)",
+      title: "Evaluation-Guided Demonstration Refinement for Vision-Language-Action Policies: The Winning Entry in the MetaFine Open Competition",
+      year: 2026,
+      venue: "arXiv",
+      distinction: ["1st Place, MetaFine Open Competition @ CoRL 2026", "MetaFine 公开赛第一名（CoRL 2026）"],
+      topic: "decision",
+      members: ["lifan-zheng", "guotao-chen"],
+      authors: ["Lifan Zheng", "Guotao Chen", "Zhenyang Li", "Shujie Cui", "Qiang Huang", "Fan Liu"],
+      paper: "https://arxiv.org/abs/2610.36765",
+      summary: [
+        "Refining demonstrations by what evaluation reveals: the winning entry in the MetaFine fine-grained manipulation competition.",
+        "依据评估暴露的问题改进示范：MetaFine 细粒度操作竞赛的冠军方案。",
       ],
-      "focus": [
-        "Multimodal representation · Knowledge reconciliation · Recommendation",
-        "多模态表征 · 知识协调 · 推荐系统"
-      ],
-      "papers": [
-        "core",
-        "addrl"
-      ]
     },
     {
-      "id": "foundation",
-      "en": "Foundation models",
-      "zh": "基础模型",
-      "description": [
-        "Understanding and using the semantic capabilities of large models for retrieval, recommendation, and learning from sparse data.",
-        "研究大模型的语义理解能力，探索其在检索、推荐与稀疏数据学习中的应用。"
+      id: "contextfold",
+      short: "MM-ContextFold",
+      title: "MM-ContextFold: Context Folding for Multimodal Agentic Retrieval",
+      year: 2026,
+      venue: "ACM MM",
+      distinction: "Oral",
+      topic: "decision",
+      members: ["yang-tian"],
+      authors: ["Yang Tian", "Fan Liu", "Jingyuan Zhang", "Zhenyang Li", "Yupeng Hu", "Liqiang Nie"],
+      paper: "https://arxiv.org/abs/2609.23121",
+      code: "https://github.com/iLearn-Lab/MM26-MMContextFold",
+      summary: [
+        "Keep the plan, load images when needed: context folding for agents working through long multimodal retrieval tasks.",
+        "保留主线规划，按需加载图像：通过上下文折叠，支持智能体完成长程多模态检索任务。",
       ],
-      "focus": [
-        "Language models · Semantic learning · Information retrieval",
-        "语言模型 · 语义学习 · 信息检索"
-      ],
-      "papers": [
-        "nmvm",
-        "sagcn"
-      ]
     },
     {
-      "id": "autonomous",
-      "en": "Autonomous intelligence",
-      "zh": "自主智能",
-      "description": [
-        "Agents that plan, use tools, and interact with the world. Current work explores multimodal retrieval and evidence-grounded generation.",
-        "研究能够规划、调用工具并与环境交互的智能体，当前工作包括多模态检索和基于事实证据的生成。"
+      id: "fig",
+      short: "FIG",
+      title: "Open Multimodal Retrieval-Augmented Factual Image Generation",
+      year: 2026,
+      venue: "ACM MM",
+      distinction: "Oral",
+      topic: "decision",
+      members: ["yang-tian"],
+      authors: ["Yang Tian", "Fan Liu", "Jingyuan Zhang", "Wei Bi", "Yupeng Hu", "Liqiang Nie"],
+      paper: "https://arxiv.org/abs/2510.22521",
+      code: "https://github.com/iLearn-Lab/MM26-FIG",
+      dataset: "https://huggingface.co/datasets/TyangJN/FIG",
+      summary: [
+        "Retrieve real-world evidence before generating an image, and evaluate how factual the result is.",
+        "先检索真实世界的证据再生成图像，并评估生成结果的事实性。",
       ],
-      "focus": [
-        "Tool use · Context management · Agentic retrieval",
-        "工具调用 · 上下文管理 · 智能体检索"
-      ],
-      "papers": [
-        "contextfold",
-        "fig"
-      ]
-    }
-  ],
-  "papers": [
-    {
-      "id": "contextfold",
-      "short": "MM-ContextFold",
-      "title": "MM-ContextFold: Context Folding for Multimodal Agentic Retrieval",
-      "year": 2026,
-      "venue": "ACM MM",
-      "distinction": "Oral",
-      "scope": "group",
-      "topic": "autonomous",
-      "members": [
-        "yang-tian"
-      ],
-      "authors": [
-        "Yang Tian",
-        "Fan Liu",
-        "Jingyuan Zhang",
-        "Zhenyang Li",
-        "Yupeng Hu",
-        "Liqiang Nie"
-      ],
-      "image": "assets/research/contextfold.jpg",
-      "paper": "https://arxiv.org/abs/2609.23121",
-      "code": "https://github.com/iLearn-Lab/MM26-MMContextFold",
-      "source": "https://tyangjn.github.io/",
-      "summary": [
-        "Keep the plan, load images when needed. A context-folding framework for agents working through extended multimodal retrieval tasks.",
-        "保留主线规划，按需加载图像。通过上下文折叠，支持智能体完成长程多模态检索任务。"
-      ],
-      "detail": [
-        "MM-ContextFold separates long-term planning from image-dependent subtasks. A persistent text context carries the plan; short-lived branches inspect images and return concise findings to that context.",
-        "MM-ContextFold 将长期规划与依赖图像的子任务分开：持续保留的文本上下文负责主线规划，临时分支处理图像，并将简洁的结果返回主线上下文。"
-      ]
     },
     {
-      "id": "fig",
-      "short": "Factual Image Generation",
-      "title": "Open Multimodal Retrieval-Augmented Factual Image Generation",
-      "year": 2026,
-      "venue": "ACM MM",
-      "distinction": "Oral",
-      "scope": "group",
-      "topic": "autonomous",
-      "members": [
-        "yang-tian"
-      ],
-      "authors": [
-        "Yang Tian",
-        "Fan Liu",
-        "Jingyuan Zhang",
-        "Wei Bi",
-        "Yupeng Hu",
-        "Liqiang Nie"
-      ],
-      "image": "assets/research/fig.jpg",
-      "paper": "https://arxiv.org/abs/2510.22521",
-      "code": "https://github.com/iLearn-Lab/MM26-FIG",
-      "dataset": "https://huggingface.co/datasets/TyangJN/FIG",
-      "source": "https://tyangjn.github.io/",
-      "summary": [
-        "Retrieve real-world evidence before generating an image. An agentic approach to improving factual consistency in visual generation.",
-        "先检索真实世界的证据，再生成图像。通过智能体检索，提高图像生成的事实一致性。"
-      ],
-      "detail": [
-        "ORIG retrieves and filters text and image evidence from the open web, then builds enriched prompts for image generation. The accompanying FIG-Eval benchmark evaluates factual grounding across different categories and dimensions.",
-        "ORIG 从开放网络检索并筛选文本与图像证据，再将其整合为更充分的提示词，引导图像生成。配套的 FIG-Eval 基准从不同类别与维度评估生成结果的事实依据。"
-      ]
-    },
-    {
-      "id": "nmvm",
-      "short": "Non-parametric multi-view learning",
-      "title": "A Non-parametric Multi-view Model for Short Text Clustering",
-      "year": 2026,
-      "venue": "KDD",
-      "scope": "group",
-      "topic": "foundation",
-      "members": [
-        "enhao-cheng"
-      ],
-      "authors": [
-        "Enhao Cheng",
-        "Xiaolong Zheng",
-        "Jintong Li",
-        "Juncheng Hou",
-        "Fan Liu",
-        "Xuemeng Song",
-        "Tian Gan",
-        "Jianhua Yin"
-      ],
-      "image": null,
-      "paper": "https://doi.org/10.1145/3770855.3817827",
-      "code": "https://github.com/chehaoa/NMVM",
-      "source": "https://api.crossref.org/works/10.1145/3770855.3817827",
-      "summary": [
+      id: "nmvm",
+      short: "NMVM",
+      title: "A Non-parametric Multi-view Model for Short Text Clustering",
+      year: 2026,
+      venue: "KDD",
+      topic: "reasoning",
+      group: "semantics",
+      members: ["enhao-cheng"],
+      authors: ["Enhao Cheng", "Xiaolong Zheng", "Jintong Li", "Juncheng Hou", "Fan Liu", "Xuemeng Song", "Tian Gan", "Jianhua Yin"],
+      paper: "https://doi.org/10.1145/3770855.3817827",
+      code: "https://github.com/chehaoa/NMVM",
+      summary: [
         "Combine word-level evidence with language-model embeddings to cluster short texts without fixing the number of clusters in advance.",
-        "结合词级信息与语言模型嵌入，在不预先指定聚类数量的情况下完成短文本聚类。"
+        "结合词级信息与语言模型嵌入，在不预先指定聚类数量的情况下完成短文本聚类。",
       ],
-      "detail": [
-        "NMVM integrates sparse word features with dense semantic embeddings in a non-parametric model. The two views provide complementary evidence for clustering short texts.",
-        "NMVM 在非参数模型中整合稀疏的词特征与稠密的语义嵌入，通过两种视角的互补信息实现短文本聚类。"
-      ]
     },
     {
-      "id": "core",
-      "short": "CoRe-MMRAG",
-      "title": "CoRe-MMRAG: Cross-Source Knowledge Reconciliation for Multimodal RAG",
-      "year": 2025,
-      "venue": "ACL",
-      "scope": "group",
-      "topic": "multimodal",
-      "members": [
-        "yang-tian"
-      ],
-      "authors": [
-        "Yang Tian",
-        "Fan Liu",
-        "Jingyuan Zhang",
-        "Victoria W.",
-        "Yupeng Hu",
-        "Liqiang Nie"
-      ],
-      "image": "assets/research/core.png",
-      "paper": "https://aclanthology.org/2025.acl-long.1583/",
-      "code": "https://github.com/iLearn-Lab/ACL25-COREMMRAG",
-      "source": "https://aclanthology.org/2025.acl-long.1583/",
-      "summary": [
+      id: "tors-aspect",
+      short: "LLM aspect alignment",
+      title: "LLM-Driven Aspect-Based Semantic Alignment for Review-Based Recommendation",
+      year: 2026,
+      venue: "ACM TORS",
+      topic: "reasoning",
+      group: "semantics",
+      members: [],
+      authors: ["Huilin Chen", "Zhiyong Cheng", "Fan Liu", "Richang Hong", "Meng Wang"],
+      paper: "https://doi.org/10.1145/3843223",
+    },
+    {
+      id: "core",
+      short: "CoRe-MMRAG",
+      title: "CoRe-MMRAG: Cross-Source Knowledge Reconciliation for Multimodal RAG",
+      year: 2025,
+      venue: "ACL",
+      topic: "reasoning",
+      group: "knowledge",
+      members: ["yang-tian"],
+      authors: ["Yang Tian", "Fan Liu", "Jingyuan Zhang", "Victoria W.", "Yupeng Hu", "Liqiang Nie"],
+      paper: "https://aclanthology.org/2025.acl-long.1583/",
+      code: "https://github.com/iLearn-Lab/ACL25-COREMMRAG",
+      summary: [
         "Reconcile what a model knows with what it retrieves, bringing visual and textual evidence together for knowledge-based question answering.",
-        "协调模型内部知识与外部检索结果，整合视觉和文本证据，支持基于知识的问答。"
+        "协调模型内部知识与外部检索结果，整合视觉和文本证据，支持基于知识的问答。",
       ],
-      "detail": [
-        "CoRe-MMRAG combines an internal response, multimodal evidence selection, an external response, and final answer integration. Its training scheme supports distinguishing and reconciling different knowledge sources.",
-        "CoRe-MMRAG 依次生成内部回答、筛选多模态证据、生成外部回答并整合最终答案，配合训练策略区分和协调不同来源的知识。"
-      ]
     },
     {
-      "id": "sagcn",
-      "short": "Understanding before recommendation",
-      "title": "Understanding Before Recommendation: Semantic Aspect-Aware Review Exploitation via Large Language Models",
-      "year": 2025,
-      "venue": "ACM TOIS",
-      "scope": "faculty",
-      "topic": "foundation",
-      "members": [],
-      "authors": [
-        "Fan Liu",
-        "Yaqi Liu",
-        "Huilin Chen",
-        "Zhiyong Cheng",
-        "Liqiang Nie",
-        "Mohan Kankanhalli"
+      id: "sagcn",
+      short: "SAGCN",
+      title: "Understanding Before Recommendation: Semantic Aspect-Aware Review Exploitation via Large Language Models",
+      year: 2025,
+      venue: "ACM TOIS",
+      topic: "reasoning",
+      group: "semantics",
+      members: [],
+      authors: ["Fan Liu", "Yaqi Liu", "Huilin Chen", "Zhiyong Cheng", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://doi.org/10.1145/3704999",
+      code: "https://github.com/HuilinChenJN/LLMSAGCN",
+      summary: [
+        "Use large language models to extract semantic aspects from reviews and build finer-grained representations for recommendation.",
+        "利用大语言模型提取评论中的语义属性，为推荐构建更细粒度的表示。",
       ],
-      "image": "assets/research/sagcn.png",
-      "paper": "https://doi.org/10.1145/3704999",
-      "code": "https://github.com/HuilinChenJN/LLMSAGCN",
-      "source": "https://arxiv.org/abs/2312.16275",
-      "summary": [
-        "Use large language models to extract semantic aspects from reviews and build more informative representations for recommendation.",
-        "利用大语言模型提取评论中的语义属性，为推荐构建更细粒度的表示。"
-      ],
-      "detail": [
-        "The method extracts semantic aspects from user reviews using large language models, then models the resulting interactions with a Semantic Aspect-based Graph Convolution Network.",
-        "该方法借助大语言模型提取用户评论中的语义属性，并通过基于语义属性的图卷积网络建模细粒度交互。"
-      ]
     },
     {
-      "id": "addrl",
-      "short": "Attribute-driven representations",
-      "title": "Attribute-driven Disentangled Representation Learning for Multimodal Recommendation",
-      "year": 2024,
-      "venue": "ACM MM",
-      "scope": "faculty",
-      "topic": "multimodal",
-      "members": [],
-      "authors": [
-        "Zhenyang Li",
-        "Fan Liu",
-        "Yinwei Wei",
-        "Zhiyong Cheng",
-        "Liqiang Nie",
-        "Mohan Kankanhalli"
-      ],
-      "image": null,
-      "paper": "https://doi.org/10.1145/3664647.3681148",
-      "code": "https://github.com/iLearn-Lab/ACMMM24-AD-DRL",
-      "source": "https://arxiv.org/abs/2312.14433",
-      "summary": [
-        "Learn disentangled representations guided by item attributes, connecting visual and textual information for recommendation.",
-        "以物品属性引导解耦表征学习，将视觉与文本信息用于推荐。"
-      ],
-      "detail": [
-        "AD-DRL connects item attributes with disentangled multimodal representations. This selected faculty work studies how attribute information can guide learning across modalities for recommendation.",
-        "AD-DRL 将物品属性与多模态解耦表征相结合，研究如何利用属性信息引导跨模态学习，服务于推荐任务。"
-      ]
-    }
-  ]
+      id: "hoi-lvlm",
+      short: "HOI with LVLM cues",
+      title: "Enhancing HOI Detection with Contextual Cues from Large Vision-Language Models",
+      year: 2025,
+      venue: "ACM MM",
+      topic: "perception",
+      group: "visual",
+      members: [],
+      authors: ["Yu-Wei Zhan", "Fan Liu", "Xin Luo", "Xin-Shun Xu", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://doi.org/10.1145/3746027.3755566",
+    },
+    {
+      id: "i3mrec",
+      short: "I³-MRec",
+      title: "I³-MRec: Invariant Learning with Information Bottleneck for Incomplete Modality Recommendation",
+      year: 2025,
+      venue: "ACM MM",
+      topic: "perception",
+      group: "representation",
+      members: [],
+      authors: ["Huilin Chen", "Miaomiao Cai", "Fan Liu", "Zhiyong Cheng", "Richang Hong", "Meng Wang"],
+      paper: "https://doi.org/10.1145/3746027.3755410",
+    },
+    {
+      id: "uipl",
+      short: "User invariant preference learning",
+      title: "User Invariant Preference Learning for Multi-Behavior Recommendation",
+      year: 2025,
+      venue: "ACM TOIS",
+      topic: "applications",
+      group: "multibehavior",
+      members: [],
+      authors: ["Mingshi Yan", "Zhiyong Cheng", "Fan Liu", "Yingda Lyu", "Yahong Han"],
+      paper: "https://doi.org/10.1145/3728465",
+    },
+    {
+      id: "vri",
+      short: "Variational rectification inference",
+      title: "Variational Rectification Inference for Learning with Noisy Labels",
+      year: 2025,
+      venue: "IJCV",
+      topic: "perception",
+      group: "visual",
+      members: [],
+      authors: ["Haoliang Sun", "Qi Wei", "Lei Feng", "Yupeng Hu", "Fan Liu", "Hehe Fan", "Yilong Yin"],
+      paper: "https://doi.org/10.1007/s11263-024-02205-5",
+    },
+    {
+      id: "addrl",
+      short: "AD-DRL",
+      title: "Attribute-driven Disentangled Representation Learning for Multimodal Recommendation",
+      year: 2024,
+      venue: "ACM MM",
+      topic: "perception",
+      group: "representation",
+      members: [],
+      authors: ["Zhenyang Li", "Fan Liu", "Yinwei Wei", "Zhiyong Cheng", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://doi.org/10.1145/3664647.3681148",
+      code: "https://github.com/iLearn-Lab/ACMMM24-AD-DRL",
+    },
+    {
+      id: "clustergcf",
+      short: "ClusterGCF",
+      title: "Cluster-based Graph Collaborative Filtering",
+      year: 2024,
+      venue: "ACM TOIS",
+      topic: "applications",
+      group: "cf",
+      members: [],
+      authors: ["Fan Liu", "Shuai Zhao", "Zhiyong Cheng", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://dl.acm.org/doi/abs/10.1145/3687481",
+      code: "https://github.com/zhao254014/ClusterGCF",
+    },
+    {
+      id: "reenactment",
+      short: "Free-viewpoint reenactment",
+      title: "Open-set Synthesis for Free-viewpoint Human Body Reenactment of Novel Poses",
+      year: 2024,
+      venue: "IEEE TCSVT",
+      topic: "perception",
+      group: "visual",
+      members: [],
+      authors: ["Zhicheng Sheng", "Fan Liu", "Meng Liu", "Feng Zheng", "Liqiang Nie"],
+      paper: "https://ieeexplore.ieee.org/abstract/document/10613821",
+    },
+    {
+      id: "bipn",
+      short: "BIPN",
+      title: "Behavior-Contextualized Item Preference Modeling for Multi-Behavior Recommendation",
+      year: 2024,
+      venue: "SIGIR",
+      topic: "applications",
+      group: "multibehavior",
+      members: [],
+      authors: ["Mingshi Yan", "Fan Liu", "Jing Sun", "Fuming Sun", "Zhiyong Cheng", "Yahong Han"],
+      paper: "https://doi.org/10.1145/3626772.3657696",
+      code: "https://github.com/MingshiYan/BIPN",
+    },
+    {
+      id: "dcgcn",
+      short: "Disentangled cascaded GCN",
+      title: "Disentangled Cascaded Graph Convolution Networks for Multi-Behavior Recommendation",
+      year: 2024,
+      venue: "ACM TORS",
+      topic: "applications",
+      group: "multibehavior",
+      members: [],
+      authors: ["Zhiyong Cheng", "Jianhua Dong", "Fan Liu", "Lei Zhu", "Xun Yang", "Meng Wang"],
+      paper: "https://doi.org/10.1145/3673244",
+    },
+    {
+      id: "ddcr",
+      short: "Decoupled cross-domain representations",
+      title: "Decoupled domain-specific and domain-conditional representation learning for cross-domain recommendation",
+      year: 2024,
+      venue: "IPM",
+      topic: "applications",
+      group: "crossdomain",
+      members: [],
+      authors: ["Yu Zhang", "Zhiyong Cheng", "Fan Liu", "Xun Yang", "Yuxin Peng"],
+      paper: "https://doi.org/10.1016/j.ipm.2024.103689",
+    },
+    {
+      id: "vcr",
+      short: "Vision attention agreement for VCR",
+      title: "Learning to Agree on Vision Attention for Visual Commonsense Reasoning",
+      year: 2024,
+      venue: "IEEE TMM",
+      topic: "perception",
+      group: "visual",
+      members: [],
+      authors: ["Zhenyang Li", "Yangyang Guo", "Kejie Wang", "Fan Liu", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://doi.org/10.1109/TMM.2023.3275874",
+    },
+    {
+      id: "sgfd",
+      short: "SGFD",
+      title: "Semantic-Guided Feature Distillation for Multimodal Recommendation",
+      year: 2023,
+      venue: "ACM MM",
+      topic: "perception",
+      group: "representation",
+      members: [],
+      authors: ["Fan Liu", "Huilin Chen", "Zhiyong Cheng", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://arxiv.org/abs/2308.03113",
+      code: "https://github.com/HuilinChenJN/SGFD",
+    },
+    {
+      id: "mbcgcn",
+      short: "MB-CGCN",
+      title: "Multi-Behavior Recommendation with Cascading Graph Convolution Networks",
+      year: 2023,
+      venue: "WWW",
+      topic: "applications",
+      group: "multibehavior",
+      members: [],
+      authors: ["Zhiyong Cheng", "Sai Han", "Fan Liu", "Lei Zhu", "Zan Gao", "Yuxin Peng"],
+      paper: "https://arxiv.org/abs/2303.15720",
+      code: "https://github.com/SS-00-SS/MBCGCN",
+    },
+    {
+      id: "metammf",
+      short: "MetaMMF",
+      title: "Dynamic Multimodal Fusion via Meta-Learning Towards Micro-Video Recommendation",
+      year: 2023,
+      venue: "ACM TOIS",
+      topic: "perception",
+      group: "representation",
+      members: [],
+      authors: ["Han Liu", "Yinwei Wei", "Fan Liu", "Wenjie Wang", "Liqiang Nie", "Tat-Seng Chua"],
+      paper: "https://dl.acm.org/doi/10.1145/3617827",
+      code: "https://github.com/hanliu95/MetaMMF",
+    },
+    {
+      id: "crgcn",
+      short: "CRGCN",
+      title: "Cascading Residual Graph Convolutional Network for Multi-Behavior Recommendation",
+      year: 2023,
+      venue: "ACM TOIS",
+      topic: "applications",
+      group: "multibehavior",
+      members: [],
+      authors: ["Mingshi Yan", "Zhiyong Cheng", "Chen Gao", "Jing Sun", "Fan Liu", "Fuming Sun", "Haojie Li"],
+      paper: "https://doi.org/10.1145/3587693",
+    },
+    {
+      id: "lightgt",
+      short: "LightGT",
+      title: "LightGT: A Light Graph Transformer for Multimedia Recommendation",
+      year: 2023,
+      venue: "SIGIR",
+      topic: "perception",
+      group: "representation",
+      members: [],
+      authors: ["Yinwei Wei", "Wenqi Liu", "Fan Liu", "Xiang Wang", "Liqiang Nie", "Tat-Seng Chua"],
+      paper: "https://doi.org/10.1145/3539618.3591716",
+    },
+    {
+      id: "videoqa",
+      short: "Video QA question enhancement",
+      title: "Advancing Video Question Answering with a Multi-modal and Multi-layer Question Enhancement Network",
+      year: 2023,
+      venue: "ACM MM",
+      topic: "perception",
+      group: "visual",
+      members: [],
+      authors: ["Meng Liu", "Fenglei Zhang", "Xin Luo", "Fan Liu", "Yinwei Wei", "Liqiang Nie"],
+      paper: "https://doi.org/10.1145/3581783.3612239",
+    },
+    {
+      id: "mqmc",
+      short: "Microvideo-product retrieval",
+      title: "Multi-queue Momentum Contrast for Microvideo-Product Retrieval",
+      year: 2023,
+      venue: "WSDM",
+      topic: "perception",
+      group: "representation",
+      members: [],
+      authors: ["Yali Du", "Yinwei Wei", "Wei Ji", "Fan Liu", "Xin Luo", "Liqiang Nie"],
+      paper: "https://doi.org/10.1145/3539597.3570405",
+    },
+    {
+      id: "cogcn",
+      short: "CoGCN",
+      title: "CoGCN: co-occurring item-aware GCN for recommendation",
+      year: 2023,
+      venue: "NCA",
+      topic: "applications",
+      group: "cf",
+      members: [],
+      authors: ["Xinxiao Zhao", "Fan Liu", "Hao Liu", "Mingzhu Xu", "Haoyu Tang", "Xueqing Li", "Yupeng Hu"],
+      paper: "https://doi.org/10.1007/s00521-023-08703-w",
+    },
+    {
+      id: "temporal-state",
+      short: "Temporal state perception",
+      title: "Deep Temporal State Perception Toward Artificial Cyber–Physical Systems",
+      year: 2023,
+      venue: "IEEE IoT-J",
+      topic: "perception",
+      group: "visual",
+      members: [],
+      authors: ["Yan Jin", "Shaokun Wang", "Fan Liu", "Hongyun Fan", "Yupeng Hu", "Xueqing Li", "Shijun Liu"],
+      paper: "https://doi.org/10.1109/JIOT.2023.3239413",
+    },
+    {
+      id: "dagcn",
+      short: "Dual attentive GCN",
+      title: "Dual attentive graph convolutional networks for cross-domain recommendation",
+      year: 2023,
+      venue: "JIFS",
+      topic: "applications",
+      group: "crossdomain",
+      members: [],
+      authors: ["Yu Zhang", "Fan Liu", "Yupeng Hu", "Xiaoli Li", "Xiangjun Dong", "Zhiyong Cheng"],
+      paper: "https://doi.org/10.3233/jifs-222411",
+    },
+    {
+      id: "upc-sdg",
+      short: "Privacy-preserving data synthesis",
+      title: "Privacy-Preserving Synthetic Data Generation for Recommendation Systems",
+      year: 2022,
+      venue: "SIGIR",
+      topic: "applications",
+      group: "crossdomain",
+      members: [],
+      authors: ["Fan Liu", "Zhiyong Cheng", "Huilin Chen", "Yinwei Wei", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://dl.acm.org/doi/abs/10.1145/3477495.3532044",
+      code: "https://github.com/HuilinChenJN/UPC-SDG",
+    },
+    {
+      id: "dmrl",
+      short: "DMRL",
+      title: "Disentangled Multimodal Representation Learning for Recommendation",
+      year: 2022,
+      venue: "IEEE TMM",
+      topic: "perception",
+      group: "representation",
+      members: [],
+      authors: ["Fan Liu", "Huilin Chen", "Zhiyong Cheng", "Anan Liu", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://arxiv.org/abs/2203.05406",
+      code: "https://github.com/liufancs/DMRL",
+    },
+    {
+      id: "fla",
+      short: "Feature-level attentive ICF",
+      title: "Feature-level Attentive ICF for Recommendation",
+      year: 2022,
+      venue: "ACM TOIS",
+      topic: "applications",
+      group: "cf",
+      members: [],
+      authors: ["Zhiyong Cheng", "Fan Liu", "Shenghan Mei", "Yangyang Guo", "Lei Zhu", "Liqiang Nie"],
+      paper: "https://doi.org/10.1145/3490477",
+      code: "https://github.com/liufancs/FLA",
+    },
+    {
+      id: "disen-gnn",
+      short: "Disen-GNN",
+      title: "Disentangled Graph Neural Networks for Session-based Recommendation",
+      year: 2022,
+      venue: "IEEE TKDE",
+      topic: "applications",
+      group: "cf",
+      members: [],
+      authors: ["Ansong Li", "Zhiyong Cheng", "Fan Liu", "Zan Gao", "Weili Guan", "Yuxin Peng"],
+      paper: "https://arxiv.org/abs/2201.03482",
+      code: "https://github.com/AnsongLi/Disen-GNN",
+    },
+    {
+      id: "imp-gcn",
+      short: "IMP-GCN",
+      title: "Interest-aware Message-Passing GCN for Recommendation",
+      year: 2021,
+      venue: "WWW",
+      topic: "applications",
+      group: "cf",
+      members: [],
+      authors: ["Fan Liu", "Zhiyong Cheng", "Lei Zhu", "Zan Gao", "Liqiang Nie"],
+      paper: "https://doi.org/10.1145/3442381.3449986",
+      code: "https://github.com/liufancs/IMP_GCN",
+    },
+    {
+      id: "a2gcn",
+      short: "A²-GCN",
+      title: "An Attribute-aware Attentive GCN Model for Attribute Missing in Recommendation",
+      year: 2020,
+      venue: "IEEE TKDE",
+      topic: "applications",
+      group: "cf",
+      members: [],
+      authors: ["Fan Liu", "Zhiyong Cheng", "Lei Zhu", "Chenghao Liu", "Liqiang Nie"],
+      paper: "https://doi.org/10.1109/TKDE.2020.3040772",
+      code: "https://github.com/liufancs/a2_gcn",
+    },
+    {
+      id: "maml",
+      short: "MAML",
+      title: "User Diverse Preference Modeling by Multimodal Attentive Metric Learning",
+      year: 2019,
+      venue: "ACM MM",
+      topic: "perception",
+      group: "representation",
+      members: [],
+      authors: ["Fan Liu", "Zhiyong Cheng", "Changchang Sun", "Yinglong Wang", "Liqiang Nie", "Mohan Kankanhalli"],
+      paper: "https://arxiv.org/abs/1908.07738",
+      code: "https://github.com/liufancs/MAML",
+    },
+  ],
 };

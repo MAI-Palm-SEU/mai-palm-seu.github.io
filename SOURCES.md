@@ -1,6 +1,6 @@
 # Content and asset sources
 
-Checked on **2026-10-27**.
+Checked on **2026-10-27**; the structure revision below was checked on **2026-10-28**.
 
 ## Group identity
 
@@ -23,9 +23,9 @@ The user supplied membership and corrected the Chinese spelling of Enhao Cheng t
 - Yang Tian: https://tyangjn.github.io/ ; portrait https://tyangjn.github.io/images/photo.jpg . His page identifies him as a Shandong University PhD candidate and SEU research intern. The site preserves Shandong University as his institution.
 - Guotao Chen: https://scholar.google.com/citations?user=edPVJ2sAAAAJ&hl=zh-CN . Master's status and Chinese name supplied by the user. Scholar lists Southeast University and large language models. The profile has only the generic Scholar avatar, so the website uses an explicit initials placeholder and does not invent a portrait.
 
-## Selected publication records (current six-paper selection)
+## The six originally published records
 
-Each of the three research directions contains at most two selected papers. The four records marked `group` require both Fan Liu and a current student in the author list. The two records marked `faculty` are earlier representative works and are not attributed to the current student roster.
+These six records were verified for the first release and are kept unchanged. The four records marked `group` require both Fan Liu and a current student in the author list. The two records marked `faculty` are earlier representative works and are not attributed to the current student roster.
 
 - MM-ContextFold, ACM MM 2026 Oral: https://arxiv.org/abs/2609.23121 ; https://github.com/iLearn-Lab/MM26-MMContextFold . Authors and method verified against arXiv. Venue and Oral status verified against https://tyangjn.github.io/ . The reported ACM DOI is 10.1145/3767308.3836039, but its CrossRef endpoint returned 404 on the check date, so the working paper link uses arXiv. No pages or volume are invented.
 - Open Multimodal Retrieval-Augmented Factual Image Generation, ACM MM 2026 Oral: https://arxiv.org/abs/2510.22521 ; https://github.com/iLearn-Lab/MM26-FIG ; https://huggingface.co/datasets/TyangJN/FIG . Authors/method verified against arXiv; venue and Oral status against the author's homepage. Reported ACM DOI 10.1145/3767308.3835240 did not yet resolve through CrossRef on the check date; the paper link uses arXiv, without invented proceedings fields.
@@ -60,3 +60,61 @@ Images are hosted locally for reliability, with size optimization only. No insti
 - Original favicon, layout, and interface implementation.
 
 Concrete structural references inspected during this revision: Xu Lab (https://hkust-xulab.com/) for institutional identity, people, and visual project entries; PolyU VCLab (https://polyu-vclab.github.io/) for thematic research collections; BREATHE AI (https://breathelab.ai/) for separate people and recruitment pages. The accepted white/navy/blue style and consistent sans-serif typography are preserved. No reference site's code, logo, or visual identity was copied.
+
+## Revision of 2026-10-28: framework, projects, full publication list
+
+**Research framework.** The framework on the home and research pages restates the official faculty profile (https://cs.seu.edu.cn/liufan/main.htm): research directions 多模态理解、基础模型、自主智能; "聚焦复杂开放环境中的感知理解、语义推理与自主决策等关键问题"; "重点探索多模态大模型、智能体与具身智能相关理论与方法"; "推动其在科学发现与科研辅助等领域的应用". Each key problem is paired with one direction. The feedback arrow (actions bring back new observations), the "how the parts connect" text and the research timeline are the site's own framing of that statement and of the publication record; they should be confirmed by Prof. Liu.
+
+**Projects and figures.** The four projects group existing papers; no new claims are introduced. Overviews paraphrase paper titles, abstracts or the earlier verified summaries. All paper figures are shown on the same tinted 16:9 frame; the images themselves are unaltered apart from resizing.
+- Multimodal Agentic Retrieval: CoRe-MMRAG teaser (`assets/research/core-teaser.jpg`) from the official repository README, https://github.com/iLearn-Lab/ACL25-COREMMRAG .
+- Language-Model Semantics for Users and Text: LLMSAGCN figure (see above).
+- Multimodal Representation for Recommendation: SGFD framework figure from the official code repository https://github.com/HuilinChenJN/SGFD .
+- Graph and Multi-Behavior Recommendation: BIPN illustration (`assets/research/bipn.jpg`) from the arXiv HTML version of https://arxiv.org/abs/2404.18166 .
+- `assets/research/fig.jpg` was replaced by a larger copy of the same ORIG/FIG figure from https://github.com/iLearn-Lab/MM26-FIG ; it illustrates the autonomous-intelligence direction on the research page.
+The funding sentence is the profile's "主持国家自然科学基金、省科技重大专项课题等科研项目"; no grant numbers are listed because the profile gives none.
+
+**Publications (34).** The list now covers every paper found with Fan Liu as an author: the six records above plus 28 records first compiled for the internal prototype from the personal homepage (17 selected papers) and ORCID 0000-0002-4547-3982. On 2026-10-28 all 28 were re-checked against Crossref (by DOI, or by title search when the link has no DOI) and the arXiv API: titles, author lists and Fan Liu's authorship match. Years follow the personal homepage where it differs from the journal issue (A²-GCN listed as 2020, issue 2022; IJCV paper listed as 2025, online 2024). Published DOIs replace arXiv links for BIPN (10.1145/3626772.3657696), Feature-level Attentive ICF (10.1145/3490477), IMP-GCN (10.1145/3442381.3449986) and A²-GCN (10.1109/TKDE.2020.3040772). Papers by current students without Fan Liu remain excluded, as before. Topic and sub-group assignments are editorial.
+
+**News added.**
+- Yang Tian's ACM MM 2026 Student Travel Award: dated 2026-08-21 on https://tyangjn.github.io/ .
+- ACM TOMM special issue on multimodal video understanding and analysis with foundation models, guest editors including Fan Liu: Crossref record for https://doi.org/10.1145/3801571 , issued 2026-07-06.
+
+**People and recruitment.** The expanded faculty biography, selected honors and service follow the official profile text (titles, appointments, 2026 top-2% list, 40+ papers, two first-author monographs, ACM China SIGMM Doctoral Dissertation Award, the three challenge first places, WSDM/TMM outstanding reviewer, area chair/senior PC and ACM Transactions guest editor). The recruitment numbers (master's students, 2–3 PhD students for 2027), eligible majors and the three expectations for applicants are taken from the same profile; per-campus quotas are left to the linked official notice because they change often.
+
+**Visual design (2026-10-28).** The home-page background `assets/flow-lines.svg` is original line art generated for this site (streams gathering into one band, a picture of multimodal inputs converging). The hero line "Perceive the world, reason with knowledge, act on one's own" is the site's own paraphrase of the official research statement above, not a quotation. Display headings use the system Georgia serif in English and the existing sans family in Chinese; no new font files were added.
+
+## Members added on 2026-10-28
+
+Supplied by the group: research interns 孙文翔 (Nanjing Agricultural University) and 刘秉宗 (Xidian University); master's students of the 2027 intake 邢越卿, 吴钰恺 and 曾沚玉. English spellings are standard pinyin and still to be confirmed by each student; photos, interests and links are pending, so the site shows initials and "Details to be added".
+
+Alumni, named by the group and checked against public profiles:
+- Zhenyang Li (李振阳): https://sdlzy.github.io/ (Ph.D., iLearn Lab, Shandong University, 2019–2024; now Research Fellow, City University of Hong Kong); Scholar https://scholar.google.com/citations?user=1y3RxHMAAAAJ . Portrait cropped from the photo on his homepage.
+- Huilin Chen: https://github.com/HuilinChenJN (profile: Ph.D. student in Artificial Intelligence, Hefei University of Technology); Scholar https://scholar.google.com/citations?user=vWoJdWEAAAAJ (verified hfut.edu.cn email). No photo is published, so the site shows initials; the Chinese name 陈慧临 was supplied by the group.
+Alumni names are highlighted in publication author lists together with current members.
+- Zhiyu Zeng (曾沚玉): portrait supplied by the group on 2026-10-28; GitHub https://github.com/AMHOH (profile name "Zeng Zhiyu", undergraduate at Central South University), which also confirms the English spelling.
+- Yukai Wu (吴钰恺): portrait supplied by the group on 2026-10-28; homepage https://mustbeasaltyfish.github.io/ ("Yukai Wu / 吴钰恺"; undergraduate in Computer Science & Technology at Beijing Jiaotong University, 2023–2027; incoming graduate student, PALM Laboratory, Southeast University; interests: agent memory, reinforcement learning, long-horizon agents). His under-review paper is not listed.
+
+**People page (2026-10-30).** Link icons follow MMLab@NTU's people page: Material Icons (Apache 2.0) for homepage, Google Scholar (mortarboard), faculty profile and email; GitHub and LinkedIn marks from Simple Icons (CC0); ORCID drawn as an "iD" badge. Years: Lifan Zheng joined in 2026 (his homepage: "2026.03 — present"); Yang Tian has been a research intern at Southeast University since 2026 (his homepage); the interns joined in October 2026 (supplied by the group); Enhao Cheng's and Guotao Chen's start years are not public and are left blank. Fan Liu's links come from his homepage (GitHub, ORCID; no Google Scholar link is published there). Yang Tian's Scholar link and Lifan Zheng's GitHub come from their homepages. LinkedIn links are not shown (decision of 2026-10-30).
+- 2026-10-30: Enhao Cheng's join year (2026) and Yang Tian's new portrait were supplied by the group; the people page shows only the year each member joined.
+- 2026-10-30: Guotao Chen's portrait (supplied by the group) and GitHub https://github.com/cgt00better-a11y ; his Scholar profile is unchanged. The GitHub account has no public profile details.
+- 2026-10-30: Guotao Chen joined the group in 2025 (supplied by the group).
+- 2026-10-30: people cards show only name, year, research interests and link icons (everyone is at Southeast University by default); alumni show their current position instead of degree and year. Institutions, undergraduate schools and alumni degrees stay in `content.js` for the group's member folder.
+- 2026-10-30: research interests are written to fit one line on a card. Shortened from the wording above: Lifan Zheng "AI agents" → "Agents"; Enhao Cheng "Generative recommendation" → "Generative RecSys"; Yang Tian "Multimodal retrieval agents · Multimodal RAG" → "Multimodal RAG · Retrieval agents"; Yukai Wu "Agent memory · Reinforcement learning" → "Memory · RL".
+- 2026-10-30: Huilin Chen's Chinese name 陈慧临 and a new research intern, 张奕轩 (joined 2026; English spelling Yixuan Zhang to be confirmed), were supplied by the group.
+- 2026-10-30: 张奕轩 portrait and research interest (multi-agent systems) supplied by the group. Research-intern cards show no "Details to be added" line.
+- 2026-10-30: research intern 卢欣童 (joined 2026; English spelling Xintong Lu to be confirmed), her portrait and research interests (memory, long-horizon agents) were supplied by the group.
+- 2026-10-30: research intern 李欣怡 (joined 2026; English spelling Xinyi Li to be confirmed) and her research interests (memory, long-horizon agents) were supplied by the group.
+- 2026-10-30: 李欣怡 portrait supplied by the group.
+- 2026-10-30: research intern 景浩然 (joined 2026), named by the group; homepage https://jiabo12.github.io/ (undergraduate in AI, Chien-Shiung Wu College, Southeast University, since 2025; directions: multimodality, autonomous intelligence, AI), GitHub https://github.com/jiabo12 ; portrait from his homepage. English spelling Haoran Jing to be confirmed. Yueqing Xing's English spelling was confirmed by the group.
+- 2026-10-30: 孙文翔 portrait supplied by the group; homepage https://swx0v0.github.io/ (name written 孙文翔; third-year undergraduate in Data Science, College of AI, Nanjing Agricultural University; interests: generative recommendation, LLMs, semantic knowledge) and GitHub https://github.com/swx0v0 . English spelling Wenxiang Sun still to be confirmed.
+- 2026-10-30: 景浩然's research interest shortened to "Multimodality" at the group's request.
+- 2026-10-30: 张奕轩, 卢欣童, 李欣怡 and 景浩然 are listed as undergraduate students rather than research interns (decision of the group); the people page has a new "Undergraduate students" section.
+
+## Revision of 2026-10-30: broader projects, embodied intelligence
+
+**Projects.** At Prof. Fan Liu's request the four narrow projects were replaced by four broad research lines: Multimodal Foundation Models, Autonomous Agents, Embodied Intelligence and Intelligent Recommendation. Each project now has themes (sub-directions) with their papers, and an explicit member list taken from members' stated interests and co-authorship; every paper on the site belongs to exactly one theme. Old project links (agentic-retrieval, llm-semantics, multimodal-recommendation, graph-recommendation) redirect to the new projects. Overviews paraphrase paper titles and abstracts; sentences about ongoing work (memory, multi-agent systems, social simulation, generative recommendation) restate members' interests and make no claim about results.
+
+**MetaFine.** Technical report: Lifan Zheng, Guotao Chen, Zhenyang Li, Shujie Cui, Qiang Huang, Fan Liu, "Evaluation-Guided Demonstration Refinement for Vision-Language-Action Policies: The Winning Entry in the MetaFine Open Competition", https://arxiv.org/abs/2610.36765 (arXiv comment: "1st place in the MetaFine Open Competition, RoboFineMani Workshop @ CoRL 2026"; abstract: π0.5 per task, revised demonstrations and expert continuations, per-instruction checkpoint comparison, team MAI ranked first with 96.66). Benchmark: MetaFine, https://arxiv.org/abs/2605.19986 (understanding, perception and controlled behavior as separate axes); competition site https://robofinemani2026.github.io/ . The project figure `assets/research/metafine-sim.jpg` is the simulation scene from the MetaFine project page https://metafine.github.io/ (sim.png, alpha flattened on white); it is a placeholder until the group's own competition image is supplied. The award is also listed among Fan Liu's honors and in the news.
+
+**More directions (2026-10-30).** The "More directions" section on the projects page lists frontier topics the group wants to explore (AI for Science, agentic reinforcement learning, multimodal reasoning, unified understanding and generation, world models, self-evolving agents). They were drafted from the official research statement (applications to scientific discovery and research assistance; agents and embodied intelligence) and members' stated interests, at the group's request; they are interests, not projects, and no papers are claimed.
+- 2026-10-30: 刘秉宗's portrait was supplied by the group, which also confirmed the spelling Bingzong Liu.
