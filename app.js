@@ -4,8 +4,8 @@
   const { papers, members, topics, projects } = window.MAI_CONTENT;
   // A project's papers are those of its themes, in theme order.
   projects.forEach((pr) => { pr.papers = pr.themes.flatMap((t) => t.papers); });
-  // Project ids before the projects were broadened (2026-10-30).
-  const legacyProjects = { "agentic-retrieval": "autonomous-agents", "llm-semantics": "recommendation", "multimodal-recommendation": "recommendation", "graph-recommendation": "recommendation" };
+  // Project ids before the projects were broadened, and a paper the first site linked to that is no longer listed (2026-10-30).
+  const legacyProjects = { "agentic-retrieval": "autonomous-agents", "llm-semantics": "recommendation", "multimodal-recommendation": "recommendation", "graph-recommendation": "recommendation", nmvm: "recommendation" };
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => [...document.querySelectorAll(s)];
   const page = document.body.dataset.page;

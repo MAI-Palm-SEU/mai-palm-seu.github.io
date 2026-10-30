@@ -178,7 +178,7 @@ const NEWS = [
   ["2026-10", "Oct 2026", "The group (team MAI) wins first place in the MetaFine Open Competition at the RoboFineMani Workshop, CoRL 2026; the technical report is on arXiv.", "团队（MAI）获 CoRL 2026 RoboFineMani Workshop MetaFine 公开赛第一名，技术报告已发布于 arXiv。", ["Project →", "所属项目 →", "project.html?id=embodied-intelligence"]],
   ["2026-10", "Oct 2026", "Yueqing Xing, Yukai Wu and Zhiyu Zeng join as master's students of the 2027 intake; undergraduate students Yixuan Zhang, Xintong Lu, Xinyi Li and Haoran Jing and research interns Wenxiang Sun (Nanjing Agricultural University) and Bingzong Liu (Xidian University) join the group.", "邢越卿、吴钰恺、曾沚玉作为 2027 级硕士生加入；本科生张奕轩、卢欣童、李欣怡、景浩然，科研实习生孙文翔（南京农业大学）、刘秉宗（西安电子科技大学）加入课题组。", ["People →", "查看团队 →", "people.html#masters"]],
   ["2026-08", "Aug 2026", "Yang Tian receives a Student Travel Award for ACM MM 2026.", "田阳获 ACM MM 2026 学生旅行资助。", ["Source ↗", "来源 ↗", "https://tyangjn.github.io/", true]],
-  ["2026-08", "Aug 2026", "NMVM, co-authored by Enhao Cheng, appears at KDD 2026.", "程恩浩与合作者的 NMVM 发表于 KDD 2026。", ["Project →", "所属项目 →", "project.html?id=multimodal-models"]],
+  ["2026-08", "Aug 2026", "NMVM, co-authored by Enhao Cheng, appears at KDD 2026.", "程恩浩与合作者的 NMVM 发表于 KDD 2026。", ["Paper ↗", "论文 ↗", "https://doi.org/10.1145/3770855.3817827", true]],
   ["2026-07", "Jul 2026", "MM-ContextFold and FIG are accepted as Oral presentations at ACM MM 2026.", "MM-ContextFold 与 FIG 被 ACM MM 2026 录用为 Oral。", ["Project →", "所属项目 →", "project.html?id=autonomous-agents"]],
   ["2026-07", "Jul 2026", "The ACM TOMM special issue on multimodal video understanding and analysis with foundation models, co-edited by Prof. Fan Liu, is published.", "刘帆教授参与客座编辑的 ACM TOMM 专刊（基础模型驱动的多模态视频理解与分析）出版。", ["Source ↗", "来源 ↗", "https://doi.org/10.1145/3801571", true]],
   ["2025-07", "Jul 2025", "CoRe-MMRAG appears in the ACL 2025 main conference proceedings.", "CoRe-MMRAG 发表于 ACL 2025 主会。", ["Project →", "所属项目 →", "project.html?id=multimodal-models"]],
@@ -273,10 +273,10 @@ const AREAS = [
     title: ["Multimodal understanding", "多模态理解"],
     question: ["How can a system turn images, video, text and behavior into representations it can use?", "如何把图像、视频、文本与行为信号转化为系统可用的表征？"],
     text: [
-      "We learn from images, video, text and user behavior: fusing and disentangling modalities, distilling the useful parts, and staying robust when a modality is missing or labels are noisy. Much of this work began in multimodal recommendation, and it now extends to visual commonsense reasoning, video question answering, and human–object interaction detection with large vision-language models.",
-      "我们从图像、视频、文本与用户行为中学习：多模态的融合与解耦、有用信息的提炼，以及模态缺失、标签噪声下的稳健性。这部分工作起步于多模态推荐，现已延伸到视觉常识推理、视频问答，以及借助视觉-语言大模型的人物交互检测。",
+      "We learn from images, video, text and user behavior: fusing and disentangling modalities, distilling the useful parts, and staying robust when a modality is missing. Much of this work began in multimodal recommendation, and it now extends to human–object interaction detection with large vision-language models and to synthesizing people in novel poses.",
+      "我们从图像、视频、文本与用户行为中学习：多模态的融合与解耦、有用信息的提炼，以及模态缺失时的稳健性。这部分工作起步于多模态推荐，现已延伸到借助视觉语言大模型的人–物交互检测，以及新姿态下的人体合成。",
     ],
-    focus: ["Multimodal representation · Disentanglement and fusion · Visual reasoning", "多模态表征 · 解耦与融合 · 视觉推理"],
+    focus: ["Multimodal representation · Vision-language models · Visual synthesis", "多模态表征 · 视觉语言大模型 · 视觉生成"],
   },
   {
     id: "reasoning",
@@ -285,8 +285,8 @@ const AREAS = [
     title: ["Foundation models", "基础模型"],
     question: ["How can large models reason with knowledge they can trust, whether it is stored in their parameters or retrieved from outside?", "无论知识来自模型参数还是外部检索，大模型如何基于可信的知识进行推理？"],
     text: [
-      "Large models know a lot, but not always the right thing. We study how a multimodal model should reconcile its internal knowledge with retrieved visual and textual evidence, and how the semantic knowledge of language models can be used to understand reviews and short texts.",
-      "大模型掌握大量知识，但未必总是正确。我们研究多模态模型如何协调自身知识与检索到的视觉、文本证据，以及如何利用语言模型的语义知识理解评论与短文本。",
+      "Large models know a lot, but not always the right thing. We study how a multimodal model should reconcile its internal knowledge with retrieved visual and textual evidence, and how the semantic knowledge of language models can be used to understand what users write in reviews.",
+      "大模型掌握大量知识，但未必总是正确。我们研究多模态模型如何协调自身知识与检索到的视觉、文本证据，以及如何利用语言模型的语义知识理解用户评论。",
     ],
     focus: ["Multimodal RAG · Knowledge reconciliation · LLM-based semantic understanding", "多模态检索增强生成 · 知识协调 · 基于大模型的语义理解"],
   },
@@ -308,17 +308,17 @@ const AREAS = [
     title: ["Retrieval and recommendation", "检索与推荐"],
     question: ["Where do these capabilities meet real users and real problems?", "这些能力在哪里接受真实用户与真实问题的检验？"],
     text: [
-      "Recommendation and retrieval are where the group's methods have been tested longest, on graph-structured interactions, multiple behavior types, cross-domain data and privacy-preserving data synthesis. Building on this, we aim to bring these capabilities to scientific discovery and research assistance.",
-      "推荐与检索是团队方法长期检验的场景，涵盖图结构交互、多类型行为、跨域数据与隐私保护的数据合成。在此基础上，我们希望把这些能力推进到科学发现与科研辅助等领域。",
+      "Recommendation and retrieval are where the group's methods have been tested longest, on graph-structured interactions, multimodal content, user reviews and privacy-preserving data synthesis, and in multimodal retrieval, where retrieved evidence must be weighed against what a model already knows. Building on this, we aim to bring these capabilities to scientific discovery and research assistance.",
+      "推荐与检索是团队方法长期检验的场景，涵盖图结构交互、多模态内容、用户评论与隐私保护的数据合成，以及需要权衡检索证据与模型已有知识的多模态检索。在此基础上，我们希望把这些能力推进到科学发现与科研辅助等领域。",
     ],
-    focus: ["Graph recommendation · Multi-behavior recommendation · Cross-domain recommendation", "图推荐 · 多行为推荐 · 跨域推荐"],
+    focus: ["Multimodal retrieval · Graph collaborative filtering · Multimodal recommendation · Privacy-preserving recommendation", "多模态检索 · 图协同过滤 · 多模态推荐 · 隐私保护推荐"],
   },
 ];
 const AREA_FIGURES = {
-  perception: ["assets/research/sgfd.jpg", "SGFD (ACM MM 2023)", "SGFD（ACM MM 2023）", "recommendation"],
-  reasoning: ["assets/research/core-teaser.jpg", "CoRe-MMRAG (ACL 2025)", "CoRe-MMRAG（ACL 2025）", "multimodal-models"],
-  decision: ["assets/research/fig.jpg", "ORIG and FIG-Eval (ACM MM 2026)", "ORIG 与 FIG-Eval（ACM MM 2026）", "autonomous-agents"],
-  applications: ["assets/research/bipn.jpg", "BIPN (SIGIR 2024)", "BIPN（SIGIR 2024）", "recommendation"],
+  perception: ["assets/research/hoi-framework.png", "ConCue (ACM MM 2025)", "ConCue（ACM MM 2025）", "multimodal-models"],
+  reasoning: ["assets/research/sagcn.png", "A large language model reads reviews for semantic aspects (ACM TOIS 2025)", "大模型读评论、提炼语义属性（ACM TOIS 2025）", "recommendation"],
+  decision: ["assets/research/fig-motivation.png", "Factual image generation with open multimodal retrieval (ACM MM 2026)", "开放多模态检索增强的事实性图像生成（ACM MM 2026）", "autonomous-agents"],
+  applications: ["assets/research/core-teaser.jpg", "CoRe-MMRAG: when retrieved and internal knowledge disagree (ACL 2025)", "CoRe-MMRAG：检索知识与模型内部知识不一致时（ACL 2025）", "multimodal-models"],
 };
 const areas = AREAS.map((a) => {
   const [img, cen, czh, pid] = AREA_FIGURES[a.id];
@@ -341,8 +341,8 @@ const areas = AREAS.map((a) => {
 }).join("\n");
 
 const TIMELINE = [
-  ["From 2019", "2019 年起", "Multimodal representation for recommendation", "面向推荐的多模态表征", "Learning what users prefer from images, text and behavior.", "从图像、文本与行为中理解用户偏好。", "MAML · DMRL · SGFD · AD-DRL"],
-  ["From 2023", "2023 年起", "Foundation models and knowledge", "大模型与知识", "Reading user text with language models, and reconciling internal and retrieved knowledge.", "用语言模型理解用户文本，协调内部知识与检索知识。", "SAGCN · CoRe-MMRAG · NMVM"],
+  ["From 2022", "2022 年起", "Multimodal representation for recommendation", "面向推荐的多模态表征", "Learning what users prefer from images, text and the interaction graph.", "从图像、文本与交互图中理解用户偏好。", "DMRL · SGFD · AD-DRL · I³-MRec"],
+  ["From 2024", "2024 年起", "Foundation models and knowledge", "大模型与知识", "Reading user reviews with language models, scene cues from vision-language models, and reconciling internal and retrieved knowledge.", "用语言模型理解用户评论，用视觉语言大模型提供场景线索，并协调内部知识与检索知识。", "SAGCN · ConCue · CoRe-MMRAG"],
   ["From 2025", "2025 年起", "Autonomous agents", "自主智能体", "Agents that retrieve evidence, manage long context and ground what they produce in facts.", "能检索证据、管理长程上下文、让输出有据可依的智能体。", "MM-ContextFold · FIG"],
   ["From 2026", "2026 年起", "Embodied intelligence", "具身智能", "Robot policies that turn instructions and what they see into precise actions.", "把指令与所见转化为精确动作的机器人策略。", "MetaFine (1st place)"],
 ];
@@ -458,7 +458,7 @@ page("publications.html", {
   title: "Publications · MAI Group",
   active: "publications",
   bodyPage: "publications",
-  main: `${pageHero(["Publications", "论文"], ["Papers by Prof. Fan Liu and collaborators, by research topic or by year. Group members and alumni are shown in bold.", "刘帆教授与合作者的论文，可按研究主题或年份浏览。课题组成员与校友以粗体显示。"])}
+  main: `${pageHero(["Publications", "论文"], ["Papers since 2022 with Prof. Fan Liu as first or corresponding author, by research topic or by year. Group members and alumni are shown in bold.", "2022 年以来刘帆教授为第一作者或通讯作者的论文，可按研究主题或年份浏览。课题组成员与校友以粗体显示。"])}
       <div class="container">
       <div class="pub-toolbar">
         <div class="view-switch" role="group" aria-label="Organize publications">
@@ -480,7 +480,7 @@ page("publications.html", {
         ${T("button", "Clear search", "清除搜索", 'id="reset-filters" class="button secondary"')}
       </div>
       <p class="publication-note">
-        ${T("span", "This list covers papers with Prof. Fan Liu as an author. For the latest records, see", "本页收录刘帆教授署名的论文。最新记录请见")}
+        ${T("span", "This list covers papers since 2022 with Prof. Fan Liu as first or corresponding author, together with papers by current members that our projects build on. For his full record, see", "本页收录 2022 年以来刘帆教授为第一作者或通讯作者的论文，以及研究项目所依托的组内成员论文。完整记录请见")}
         ${T("a", "his homepage ↗", "个人主页 ↗", `href="https://liufancs.github.io/" class="inline-link" ${ext}`)}
         ${T("span", "and", "和")}
         <a href="https://orcid.org/0000-0002-4547-3982" class="inline-link" ${ext}>ORCID ↗</a>
