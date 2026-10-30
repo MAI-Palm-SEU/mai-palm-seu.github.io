@@ -52,7 +52,7 @@ window.MAI_CONTENT = {
       links: { scholar: "https://scholar.google.com/citations?user=edPVJ2sAAAAJ", github: "https://github.com/cgt00better-a11y" },
     },
     // Incoming master's students and interns (names supplied by the group, 2026-10).
-    { id: "yueqing-xing", en: "Yueqing Xing", zh: "邢越卿", role: "Master", intake: 2027, institution: ["Southeast University", "东南大学"], photo: null, links: {} },
+    { id: "yueqing-xing", en: "Yueqing Xing", zh: "邢越卿", role: "Master", intake: 2027, institution: ["Southeast University", "东南大学"], photo: "assets/people/yueqing-xing.jpg", links: {} },
     {
       id: "yukai-wu", en: "Yukai Wu", zh: "吴钰恺", role: "Master", intake: 2027,
       institution: ["Southeast University", "东南大学"],
