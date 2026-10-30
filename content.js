@@ -102,8 +102,10 @@ window.MAI_CONTENT = {
       id: "huilin-chen", en: "Huilin Chen", zh: "陈慧临", role: "Alumni",
       degree: null,
       now: ["Ph.D. student @ HFUT", "合肥工业大学博士生"],
-      photo: null,
-      links: { github: "https://github.com/HuilinChenJN", scholar: "https://scholar.google.com/citations?user=vWoJdWEAAAAJ" },
+      note: ["Ph.D. student at Hefei University of Technology since 2023 (supervisors Prof. Zhiyong Cheng and Dr. Fan Liu); visiting Ph.D. student at NUS", "2023 年起在合肥工业大学读博（导师程志勇教授、刘帆老师）；现于新加坡国立大学访问"],
+      interests: ["Multimedia recommendation · Personalized agents", "多媒体推荐 · 个性化智能体"],
+      photo: "assets/people/huilin-chen.jpg",
+      links: { homepage: "https://huilinchenjn.github.io/", github: "https://github.com/HuilinChenJN", scholar: "https://scholar.google.com/citations?user=vWoJdWEAAAAJ" },
     },
   ],
 

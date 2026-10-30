@@ -490,7 +490,7 @@ page("publications.html", {
 
 /* ---------- People ---------- */
 // A card shows only name, year, research interests and link icons; everyone is at Southeast University
-// by default, so institution, notes and alumni degrees stay in content.js for the member folder. Alumni show where they are now.
+// by default, so institution, notes and alumni degrees stay in content.js for the member folder. Alumni show only where they are now.
 const personCard = (m) => {
   const year = yearLine(m);
   const now = m.role === "Alumni" ? m.now : null;
@@ -500,7 +500,7 @@ const personCard = (m) => {
     m.zh === m.en ? "" : T("p", m.zh, m.en, 'class="person-other-name"'),
     year ? T("p", ...year, 'class="person-year"') : "",
     now ? T("p", ...now, 'class="person-institution"') : "",
-    m.interests ? T("p", ...m.interests, 'class="person-interests"') : "",
+    m.interests && m.role !== "Alumni" ? T("p", ...m.interests, 'class="person-interests"') : "",
     empty ? T("p", "Details to be added", "资料待补充", 'class="person-interests"') : "",
     iconLinks(m.links),
   ].filter(Boolean);
