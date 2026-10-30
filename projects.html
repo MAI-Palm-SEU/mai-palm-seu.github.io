@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/fonts.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="content.js" defer></script>
+    <script src="model.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body data-page="projects">
@@ -23,7 +24,7 @@
           <a data-en="Home" data-zh="首页" href="index.html">Home</a>
           <a data-en="Research" data-zh="研究方向" href="research.html">Research</a>
           <a data-en="Projects" data-zh="研究项目" href="projects.html" class="active" aria-current="page">Projects</a>
-          <a data-en="Publications" data-zh="论文" href="publications.html">Publications</a>
+          <a data-en="Publications" data-zh="研究成果" href="publications.html">Publications</a>
           <a data-en="People" data-zh="团队" href="people.html">People</a>
           <a data-en="Join us" data-zh="加入我们" href="join.html">Join us</a>
         </nav>
@@ -40,9 +41,9 @@
     <main id="main">
       <section class="page-hero">
         <div class="container page-hero-inner">
-          <p data-en="MAI Group" data-zh="MAI 课题组" class="eyebrow">MAI Group</p>
+
           <h1 data-en="Projects" data-zh="研究项目" class="display">Projects</h1>
-          <p data-en="Four long-running lines of research. Each brings together several directions with their papers, code and data, and the people working on them. The tags show where a project sits in our research framework." data-zh="四条长期研究主线。每个项目包含若干子方向，列出相关论文、代码与数据，以及参与的成员。标签表示项目在研究框架中的位置。" class="lead">Four long-running lines of research. Each brings together several directions with their papers, code and data, and the people working on them. The tags show where a project sits in our research framework.</p>
+          <p data-en="Our projects address specific problems within the three research directions. Each project brings together related topics, publications, code, data and participating members." data-zh="研究项目围绕三个方向中的具体问题展开。每个项目汇集相关课题、论文、代码、数据与参与成员，并标明所属研究方向。" class="lead">Our projects address specific problems within the three research directions. Each project brings together related topics, publications, code, data and participating members.</p>
         </div>
       </section>
       <section class="section">
@@ -52,29 +53,35 @@
       </section>
       <section class="section alt" id="more-directions">
         <div class="container">
-          <div class="section-head"><div><p data-en="Frontier" data-zh="前沿" class="eyebrow">Frontier</p><h2 data-en="More directions" data-zh="更多方向" class="display">More directions</h2><p data-en="Beyond the four projects, we follow these frontier topics closely and want to explore them. Students who would like to start something new in one of them are welcome." data-zh="除以上四个项目外，我们也密切关注以下前沿方向，并希望开展探索。欢迎有兴趣的同学在这些方向上开启新的课题。" class="lead">Beyond the four projects, we follow these frontier topics closely and want to explore them. Students who would like to start something new in one of them are welcome.</p></div></div>
+          <div class="section-head"><div><h2 data-en="Exploratory topics" data-zh="探索课题" class="display">Exploratory topics</h2><p data-en="Within the same three directions, we are interested in the following topics. These are exploratory interests rather than completed results; we welcome students who would like to investigate them." data-zh="以下课题仍围绕上述三个研究方向展开，属于希望探索的问题。欢迎有兴趣的同学与我们讨论具体研究计划。" class="lead">Within the same three directions, we are interested in the following topics. These are exploratory interests rather than completed results; we welcome students who would like to investigate them.</p></div></div>
           <ul class="direction-grid">
             <li class="card">
+              <p class="card-tags"><a data-en="Semantic Reasoning" data-zh="语义推理" href="research.html#reasoning">Semantic Reasoning</a> · <a data-en="Autonomous Decision-Making" data-zh="自主决策" href="research.html#decision">Autonomous Decision-Making</a></p>
               <h3 data-en="AI for Science" data-zh="科研智能">AI for Science</h3>
               <p data-en="Agents that read the literature, form hypotheses and run analyses, assisting scientific discovery and everyday research." data-zh="能阅读文献、提出假设、开展分析的智能体，辅助科学发现与日常科研。">Agents that read the literature, form hypotheses and run analyses, assisting scientific discovery and everyday research.</p>
             </li>
             <li class="card">
+              <p class="card-tags"><a data-en="Autonomous Decision-Making" data-zh="自主决策" href="research.html#decision">Autonomous Decision-Making</a></p>
               <h3 data-en="Agentic reinforcement learning" data-zh="智能体强化学习">Agentic reinforcement learning</h3>
               <p data-en="Training agents with reinforcement learning to plan, call tools and learn from feedback over long tasks." data-zh="用强化学习训练智能体在长程任务中规划、调用工具，并从反馈中学习。">Training agents with reinforcement learning to plan, call tools and learn from feedback over long tasks.</p>
             </li>
             <li class="card">
+              <p class="card-tags"><a data-en="Semantic Reasoning" data-zh="语义推理" href="research.html#reasoning">Semantic Reasoning</a></p>
               <h3 data-en="Multimodal reasoning" data-zh="多模态推理">Multimodal reasoning</h3>
               <p data-en="Step-by-step reasoning over images, video and diagrams, including thinking with images." data-zh="在图像、视频与图表上逐步推理，包括「用图像思考」。">Step-by-step reasoning over images, video and diagrams, including thinking with images.</p>
             </li>
             <li class="card">
+              <p class="card-tags"><a data-en="Perception &amp; Understanding" data-zh="感知与理解" href="research.html#perception">Perception &amp; Understanding</a> · <a data-en="Semantic Reasoning" data-zh="语义推理" href="research.html#reasoning">Semantic Reasoning</a></p>
               <h3 data-en="Unified understanding and generation" data-zh="理解与生成统一">Unified understanding and generation</h3>
               <p data-en="One model that both understands and generates images, video and text, and keeps what it generates true to fact." data-zh="同一个模型既能理解也能生成图像、视频与文本，并让生成内容符合事实。">One model that both understands and generates images, video and text, and keeps what it generates true to fact.</p>
             </li>
             <li class="card">
+              <p class="card-tags"><a data-en="Perception &amp; Understanding" data-zh="感知与理解" href="research.html#perception">Perception &amp; Understanding</a> · <a data-en="Autonomous Decision-Making" data-zh="自主决策" href="research.html#decision">Autonomous Decision-Making</a></p>
               <h3 data-en="World models" data-zh="世界模型">World models</h3>
               <p data-en="Models that predict how the world changes under actions, for planning, simulation and embodied agents." data-zh="预测世界在行动下如何变化的模型，用于规划、仿真与具身智能体。">Models that predict how the world changes under actions, for planning, simulation and embodied agents.</p>
             </li>
             <li class="card">
+              <p class="card-tags"><a data-en="Autonomous Decision-Making" data-zh="自主决策" href="research.html#decision">Autonomous Decision-Making</a></p>
               <h3 data-en="Self-evolving agents" data-zh="自我进化的智能体">Self-evolving agents</h3>
               <p data-en="Agents that accumulate memory, skills and experience, and keep improving after deployment." data-zh="能积累记忆、技能与经验，并在部署后持续改进的智能体。">Agents that accumulate memory, skills and experience, and keep improving after deployment.</p>
             </li>
@@ -85,7 +92,7 @@
       <section class="section">
         <div class="container funding-note">
           <div>
-            <p data-en="Funding" data-zh="经费" class="eyebrow">Funding</p>
+
             <h2 data-en="Funded research" data-zh="科研项目" class="display">Funded research</h2>
           </div>
           <p data-en="Prof. Fan Liu leads research projects funded by the National Natural Science Foundation of China and by major provincial science and technology programs." data-zh="刘帆教授主持国家自然科学基金、省科技重大专项课题等科研项目。">Prof. Fan Liu leads research projects funded by the National Natural Science Foundation of China and by major provincial science and technology programs.</p>

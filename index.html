@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/fonts.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="content.js" defer></script>
+    <script src="model.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body data-page="index">
@@ -23,7 +24,7 @@
           <a data-en="Home" data-zh="首页" href="index.html" class="active" aria-current="page">Home</a>
           <a data-en="Research" data-zh="研究方向" href="research.html">Research</a>
           <a data-en="Projects" data-zh="研究项目" href="projects.html">Projects</a>
-          <a data-en="Publications" data-zh="论文" href="publications.html">Publications</a>
+          <a data-en="Publications" data-zh="研究成果" href="publications.html">Publications</a>
           <a data-en="People" data-zh="团队" href="people.html">People</a>
           <a data-en="Join us" data-zh="加入我们" href="join.html">Join us</a>
         </nav>
@@ -40,21 +41,16 @@
     <main id="main">
       <section class="hero">
         <div class="container hero-inner">
-          <p data-en="MAI Group · Southeast University" data-zh="MAI 课题组 · 东南大学" class="pill">MAI Group · Southeast University</p>
           <h1 data-en="Multimodal Autonomous Intelligence" data-zh="多模态自主智能" class="display">Multimodal Autonomous Intelligence</h1>
           <p class="hero-lead"><span data-en="A research group at PALM Lab, Southeast University, led by" data-zh="东南大学 PALM 实验室课题组，由">A research group at PALM Lab, Southeast University, led by</span> <a data-en="Prof. Fan Liu" data-zh="刘帆教授" href="people.html#fan-liu">Prof. Fan Liu</a><span data-en=", studying how intelligent systems perceive, reason and decide in complex, open environments." data-zh="负责，研究智能系统如何在复杂开放环境中感知、推理与决策。">, studying how intelligent systems perceive, reason and decide in complex, open environments.</span></p>
-          <blockquote class="hero-quote">
-            <p data-en="Perceive the world, reason with knowledge, act on one’s own." data-zh="感知世界，依据知识推理，自主决策与行动。">Perceive the world, reason with knowledge, act on one’s own.</p>
-            <span data-en="— Our research framework" data-zh="— 我们的研究框架">— Our research framework</span>
-          </blockquote>
           <div class="hero-actions">
             <a data-en="Projects →" data-zh="研究项目 →" href="projects.html" class="button">Projects →</a>
-            <a data-en="Publications" data-zh="论文" href="publications.html" class="button secondary">Publications</a>
+            <a data-en="Publications" data-zh="研究成果" href="publications.html" class="button secondary">Publications</a>
           </div>
             <ul class="pillars">
-              <li><a class="card" href="research.html#perception"><h3 data-en="Perceive" data-zh="感知理解" class="display">Perceive</h3><p data-en="01 · Multimodal understanding ↗" data-zh="01 · 多模态理解 ↗">01 · Multimodal understanding ↗</p></a></li>
-              <li><a class="card" href="research.html#reasoning"><h3 data-en="Reason" data-zh="语义推理" class="display">Reason</h3><p data-en="02 · Foundation models ↗" data-zh="02 · 基础模型 ↗">02 · Foundation models ↗</p></a></li>
-              <li><a class="card" href="research.html#decision"><h3 data-en="Decide" data-zh="自主决策" class="display">Decide</h3><p data-en="03 · Autonomous intelligence ↗" data-zh="03 · 自主智能 ↗">03 · Autonomous intelligence ↗</p></a></li>
+              <li><a class="card" href="research.html#perception"><h3 data-en="Perception &amp; Understanding" data-zh="感知与理解" class="display">Perception &amp; Understanding</h3><p data-en="Learning representations from images, text and behavior to understand objects, interactions and user preferences." data-zh="从图像、文本与行为中学习表征，理解对象、交互关系与用户偏好。">Learning representations from images, text and behavior to understand objects, interactions and user preferences.</p></a></li>
+              <li><a class="card" href="research.html#reasoning"><h3 data-en="Semantic Reasoning" data-zh="语义推理" class="display">Semantic Reasoning</h3><p data-en="Interpreting semantic aspects and combining internal knowledge with retrieved evidence for grounded answers." data-zh="分析语义属性，协调模型内部知识与检索证据，形成有依据的回答。">Interpreting semantic aspects and combining internal knowledge with retrieved evidence for grounded answers.</p></a></li>
+              <li><a class="card" href="research.html#decision"><h3 data-en="Autonomous Decision-Making" data-zh="自主决策" class="display">Autonomous Decision-Making</h3><p data-en="Planning, tool use and action policies for agents and robots operating over multiple steps." data-zh="研究智能体与机器人在多步任务中的规划、工具调用和动作策略。">Planning, tool use and action policies for agents and robots operating over multiple steps.</p></a></li>
             </ul>
         </div>
       </section>
@@ -62,7 +58,7 @@
         <div class="container">
           <div class="section-head">
             <div>
-              <p data-en="Projects" data-zh="研究项目" class="eyebrow">Projects</p>
+
               <h2 data-en="Selected projects" data-zh="代表项目" class="display">Selected projects</h2>
             </div>
             <a data-en="All projects →" data-zh="全部项目 →" href="projects.html" class="text-link">All projects →</a>
@@ -74,7 +70,7 @@
         <div class="container news-grid">
           <div class="section-head">
             <div>
-              <p data-en="News" data-zh="动态" class="eyebrow">News</p>
+
               <h2 data-en="Latest news" data-zh="最新动态" class="display">Latest news</h2>
             </div>
           </div>
@@ -114,7 +110,7 @@
         <div class="container">
           <div class="section-head">
             <div>
-              <p data-en="People" data-zh="团队" class="eyebrow">People</p>
+
               <h2 data-en="The group" data-zh="团队成员" class="display">The group</h2>
             </div>
             <a data-en="Meet everyone →" data-zh="查看团队 →" href="people.html" class="text-link">Meet everyone →</a>
@@ -148,17 +144,17 @@
           <a href="people.html#yueqing-xing" class="person-preview">
             <img src="assets/people/yueqing-xing.jpg" alt="Yueqing Xing" loading="lazy" decoding="async" />
             <h3 data-en="Yueqing Xing" data-zh="邢越卿">Yueqing Xing</h3>
-            <p data-en="Master's student · 2027" data-zh="2027 级硕士生">Master's student · 2027</p>
+            <p data-en="Master's student · incoming 2027" data-zh="2027 级硕士生（待入学）">Master's student · incoming 2027</p>
           </a>
           <a href="people.html#yukai-wu" class="person-preview">
             <img src="assets/people/yukai-wu.jpg" alt="Yukai Wu" loading="lazy" decoding="async" />
             <h3 data-en="Yukai Wu" data-zh="吴钰恺">Yukai Wu</h3>
-            <p data-en="Master's student · 2027" data-zh="2027 级硕士生">Master's student · 2027</p>
+            <p data-en="Master's student · incoming 2027" data-zh="2027 级硕士生（待入学）">Master's student · incoming 2027</p>
           </a>
           <a href="people.html#zhiyu-zeng" class="person-preview">
             <img src="assets/people/zhiyu-zeng.jpg" alt="Zhiyu Zeng" loading="lazy" decoding="async" />
             <h3 data-en="Zhiyu Zeng" data-zh="曾沚玉">Zhiyu Zeng</h3>
-            <p data-en="Master's student · 2027" data-zh="2027 级硕士生">Master's student · 2027</p>
+            <p data-en="Master's student · incoming 2027" data-zh="2027 级硕士生（待入学）">Master's student · incoming 2027</p>
           </a>
           <a href="people.html#yixuan-zhang" class="person-preview">
             <img src="assets/people/yixuan-zhang.jpg" alt="Yixuan Zhang" loading="lazy" decoding="async" />
@@ -197,7 +193,7 @@
         <div class="container">
           <div class="card join-cta">
             <div>
-              <p data-en="Join us" data-zh="加入我们" class="eyebrow">Join us</p>
+
               <h2 data-en="Work with us" data-zh="与我们一起研究" class="display">Work with us</h2>
               <p data-en="We welcome prospective graduate students, research interns, and postdoctoral researchers." data-zh="欢迎有兴趣的硕士生、博士生、科研实习生和博士后与我们交流。" class="lead">We welcome prospective graduate students, research interns, and postdoctoral researchers.</p>
             </div>

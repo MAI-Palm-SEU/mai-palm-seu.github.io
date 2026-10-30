@@ -1,11 +1,12 @@
 /* Buildless, accessible interactions for the group website. */
 (() => {
   "use strict";
-  const { papers, members, topics, projects } = window.MAI_CONTENT;
-  // A project's papers are those of its themes, in theme order.
-  projects.forEach((pr) => { pr.papers = pr.themes.flatMap((t) => t.papers); });
-  // Project ids before the projects were broadened, and a paper the first site linked to that is no longer listed (2026-10-30).
-  const legacyProjects = { "agentic-retrieval": "autonomous-agents", "llm-semantics": "recommendation", "multimodal-recommendation": "recommendation", "graph-recommendation": "recommendation", nmvm: "recommendation" };
+  const content = window.MAI_CONTENT;
+  const model = window.MAI_MODEL;
+  const { papers, members, topics } = content;
+  const projects = content.projects.map((pr) => ({ ...pr, papers: model.projectPapers(pr), layers: model.projectTopics(pr, content) }));
+  // Keep old project URLs; paper URLs resolve from their actual project membership.
+  const legacyProjects = { "agentic-retrieval": "autonomous-agents", "llm-semantics": "recommendation", "multimodal-recommendation": "recommendation", "graph-recommendation": "recommendation" };
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => [...document.querySelectorAll(s)];
   const page = document.body.dataset.page;
@@ -28,9 +29,9 @@
   const paperById = (id) => papers.find((p) => p.id === id);
   const projectOfPaper = (id) => projects.find((pr) => pr.papers.includes(id));
   const projectLink = (pr) => `project.html?id=${encodeURIComponent(pr.id)}`;
-  const topicLabel = (t) => (t.step ? `${t.step} ${name(t)}` : name(t));
+  const topicLabel = (t) => name(t);
   // Old topic ids, kept so earlier links still land in the right place.
-  const legacyTopics = { multimodal: "perception", foundation: "reasoning", autonomous: "decision" };
+  const legacyTopics = { multimodal: "perception", foundation: "reasoning", autonomous: "decision", applications: "perception" };
 
   /* ---------- Papers ---------- */
   function authorHtml(p) {
@@ -45,7 +46,7 @@
   function paperItem(p, { showTopic = false, showProject = true, showSummary = false } = {}) {
     const pr = showProject && projectOfPaper(p.id);
     const links = [
-      external(p.paper, tr("Paper", "论文")),
+      external(p.paper, p.kind === "book" ? tr("Book", "专著") : p.kind === "report" ? tr("Report", "报告") : tr("Paper", "论文")),
       p.code ? external(p.code, tr("Code", "代码")) : "",
       p.dataset ? external(p.dataset, tr("Dataset", "数据集")) : "",
       pr ? `<a href="${projectLink(pr)}">${tr("Project", "项目")}</a>` : "",
@@ -55,25 +56,14 @@
       <p class="pub-title"><a href="${esc(p.paper)}" target="_blank" rel="noopener noreferrer">${esc(p.title)}</a></p>
       <p class="pub-authors">${authorHtml(p)}</p>
       ${showSummary && p.summary ? `<p class="pub-summary">${esc(local(p.summary))}</p>` : ""}
-      <div class="pub-meta"><span class="venue">${esc(p.venue)} ${p.year}</span>${p.distinction ? `<span class="oral">${esc(Array.isArray(p.distinction) ? local(p.distinction) : p.distinction)}</span>` : ""}${showTopic ? `<span class="pub-topic">${esc(name(topicById(p.topic)))}</span>` : ""}<span class="pub-links">${links}</span></div>
+      <div class="pub-meta"><span class="venue">${esc(p.venue)} ${p.year}</span>${p.kind === "report" ? `<span class="work-type">${tr("Technical report", "技术报告")}</span>` : ""}${p.distinction ? `<span class="oral">${esc(Array.isArray(p.distinction) ? local(p.distinction) : p.distinction)}</span>` : ""}${showTopic ? `<a class="pub-topic" href="research.html#${p.topic}">${esc(name(topicById(p.topic)))}</a>` : ""}<span class="pub-links">${links}</span></div>
+      ${p.relatedTopics?.length ? `<p class="related-topics">${tr("Also related to", "关联方向")} ${p.relatedTopics.map((id) => `<a href="research.html#${id}">${esc(name(topicById(id)))}</a>`).join(tr(", ", "、"))}</p>` : ""}
     </li>`;
-  }
-
-  function matches(p, tokens) {
-    if (!tokens.length) return true;
-    const zhNames = members
-      .filter((m) => p.members.includes(m.id))
-      .map((m) => m.zh)
-      .join(" ");
-    const t = topicById(p.topic);
-    const haystack = `${p.title} ${p.short || ""} ${p.authors.join(" ")} ${p.venue} ${p.year} ${t.en} ${t.zh} ${zhNames} 刘帆`.toLocaleLowerCase();
-    return tokens.every((q) => haystack.includes(q));
   }
 
   function renderPublications() {
     if (page !== "publications") return;
-    const tokens = query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
-    const found = papers.filter((p) => matches(p, tokens));
+    const found = papers.filter((p) => model.matches(p, query, content));
     let sections = [];
     if (view === "topic") {
       sections = topics
@@ -90,7 +80,6 @@
             count: inTopic.length,
             html: `<section class="pub-section" id="${t.id}">
               <div class="pub-section-head">
-                <p class="step-label">${esc(t.step ? `${t.step} · ${local(t.problem)}` : local(t.problem))}</p>
                 <h2>${esc(name(t))}</h2>
                 <p class="pub-section-intro">${esc(local(t.intro))} <a href="research.html#${t.id}" class="inline-link">${tr("About this direction", "了解该方向")} →</a></p>
               </div>${body}</section>`,
@@ -112,7 +101,7 @@
     $("#pub-index").innerHTML = sections.map((s) => `<a href="#${s.id}">${esc(s.label)}<span>${s.count}</span></a>`).join("");
     $("#pub-index").hidden = !sections.length;
     $("#publication-list").innerHTML = sections.map((s) => s.html).join("");
-    $("#publication-count").textContent = tr(`${found.length} ${found.length === 1 ? "paper" : "papers"}`, `共 ${found.length} 篇`);
+    $("#publication-count").textContent = tr(`${found.length} ${found.length === 1 ? "publication" : "publications"}`, `共 ${found.length} 项成果`);
     $("#empty-state").hidden = found.length !== 0;
     $$("[data-view]").forEach((b) => {
       const selected = b.dataset.view === view;
@@ -134,10 +123,11 @@
     const list = pr.papers.map(paperById);
     const code = list.filter((p) => p.code).length;
     const data = list.filter((p) => p.dataset).length;
-    const period = pr.until ? `${pr.since}–${pr.until}` : tr(`Since ${pr.since}`, `${pr.since} 年至今`);
+    const counts = model.workCounts(list);
     return [
-      period,
-      tr(`${list.length} ${list.length === 1 ? "paper" : "papers"}`, `${list.length} 篇论文`),
+      counts.paper ? tr(`${counts.paper} ${counts.paper === 1 ? "paper" : "papers"}`, `${counts.paper} 篇论文`) : "",
+      counts.report ? tr(`${counts.report} ${counts.report === 1 ? "report" : "reports"}`, `${counts.report} 篇技术报告`) : "",
+      counts.book ? tr(`${counts.book} ${counts.book === 1 ? "book" : "books"}`, `${counts.book} 部专著`) : "",
       code ? tr(`${code} code ${code === 1 ? "repository" : "repositories"}`, `${code} 个代码仓库`) : "",
       data ? tr(`${data} ${data === 1 ? "dataset" : "datasets"}`, `${data} 个数据集`) : "",
     ]
@@ -152,7 +142,7 @@
     );
     return people.join(tr(", ", "、"));
   }
-  const layerText = (pr) => pr.layers.map((id) => esc(topicLabel(topicById(id)))).join(" · ");
+  const layerText = (pr) => pr.layers.map((id) => `<a href="research.html#${id}">${esc(topicLabel(topicById(id)))}</a>`).join(" · ");
   const frame = (pr, extra = "") =>
     `<a class="frame${extra}" href="${projectLink(pr)}" tabindex="-1" aria-hidden="true"><img src="${pr.image}" alt="" loading="lazy" decoding="async"></a>`;
 
@@ -174,6 +164,9 @@
     if (featured) featured.innerHTML = projects.slice(0, Number(featured.dataset.limit) || 3).map((pr) => projectCard(pr, false)).join("");
     const list = $("#project-list");
     if (list) list.innerHTML = projects.map((pr) => projectCard(pr, true)).join("");
+    $$("[data-featured-papers]").forEach((el) => {
+      el.innerHTML = topicById(el.dataset.featuredPapers).featured.map((id) => paperItem(paperById(id), { showSummary: true })).join("");
+    });
     $$("[data-layer-projects]").forEach((el) => {
       el.innerHTML = projects
         .filter((pr) => pr.layers.includes(el.dataset.layerProjects))
@@ -206,11 +199,11 @@
       <section class="project-block"><h2 class="display">${tr("Overview", "项目概述")}</h2><div>${local(pr.overview)
         .map((t) => `<p>${esc(t)}</p>`)
         .join("")}</div></section>
-      <section class="project-block"><h2 class="display">${tr("Directions and papers", "子方向与论文")}</h2><div>${pr.themes
+      <section class="project-block"><h2 class="display">${tr("Topics and publications", "课题与成果")}</h2><div>${pr.themes
         .map(
           (t) => `<section class="project-theme"><h3>${esc(name(t))}</h3><p>${esc(local(t.text))}</p>${
             t.papers.length
-              ? `<ol class="pub-list">${t.papers.map((pid) => paperItem(paperById(pid), { showProject: false, showSummary: t.papers.length <= 3 })).join("")}</ol>`
+              ? `<ol class="pub-list">${t.papers.map((pid) => paperItem(paperById(pid), { showProject: false, showTopic: true, showSummary: t.papers.length <= 3 })).join("")}</ol>`
               : `<p class="theme-ongoing">${tr("Work in progress; papers will be listed here once published.", "研究进行中，论文发表后列于此处。")}</p>`
           }</section>`,
         )
@@ -239,8 +232,8 @@
     updateMenuLabel();
     if ($("#publication-search")) {
       $("#publication-search").placeholder = tr("Search title, author, venue or year", "搜索标题、作者、会议或年份");
-      $("#publication-search").setAttribute("aria-label", tr("Search publications", "搜索论文"));
-      $(".view-switch").setAttribute("aria-label", tr("Organize publications", "论文排列方式"));
+      $("#publication-search").setAttribute("aria-label", tr("Search publications", "搜索成果"));
+      $(".view-switch").setAttribute("aria-label", tr("Organize publications", "成果排列方式"));
       $("#pub-index").setAttribute("aria-label", tr("Jump to section", "跳转到分类"));
     }
     renderPublications();

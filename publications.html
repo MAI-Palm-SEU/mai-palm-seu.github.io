@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/fonts.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="content.js" defer></script>
+    <script src="model.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body data-page="publications">
@@ -23,7 +24,7 @@
           <a data-en="Home" data-zh="首页" href="index.html">Home</a>
           <a data-en="Research" data-zh="研究方向" href="research.html">Research</a>
           <a data-en="Projects" data-zh="研究项目" href="projects.html">Projects</a>
-          <a data-en="Publications" data-zh="论文" href="publications.html" class="active" aria-current="page">Publications</a>
+          <a data-en="Publications" data-zh="研究成果" href="publications.html" class="active" aria-current="page">Publications</a>
           <a data-en="People" data-zh="团队" href="people.html">People</a>
           <a data-en="Join us" data-zh="加入我们" href="join.html">Join us</a>
         </nav>
@@ -40,19 +41,19 @@
     <main id="main">
       <section class="page-hero">
         <div class="container page-hero-inner">
-          <p data-en="MAI Group" data-zh="MAI 课题组" class="eyebrow">MAI Group</p>
-          <h1 data-en="Publications" data-zh="论文" class="display">Publications</h1>
-          <p data-en="Papers since 2022 with Prof. Fan Liu as first or corresponding author, by research topic or by year. Group members and alumni are shown in bold." data-zh="2022 年以来刘帆教授为第一作者或通讯作者的论文，可按研究主题或年份浏览。课题组成员与校友以粗体显示。" class="lead">Papers since 2022 with Prof. Fan Liu as first or corresponding author, by research topic or by year. Group members and alumni are shown in bold.</p>
+
+          <h1 data-en="Publications" data-zh="研究成果" class="display">Publications</h1>
+          <p data-en="Selected work by Prof. Fan Liu, together with publications co-authored with current group members. Browse by research direction or year; group members and alumni are highlighted in the author lists." data-zh="展示刘帆教授的代表工作，以及与在读成员共同署名的成果。可按研究方向或年份浏览，作者列表突出显示课题组成员与已毕业成员。" class="lead">Selected work by Prof. Fan Liu, together with publications co-authored with current group members. Browse by research direction or year; group members and alumni are highlighted in the author lists.</p>
         </div>
       </section>
       <div class="container">
       <div class="pub-toolbar">
         <div class="view-switch" role="group" aria-label="Organize publications">
-          <button data-en="By topic" data-zh="按主题" data-view="topic" class="active" aria-pressed="true">By topic</button>
+          <button data-en="By direction" data-zh="按方向" data-view="topic" class="active" aria-pressed="true">By direction</button>
           <button data-en="By year" data-zh="按年份" data-view="year" aria-pressed="false">By year</button>
         </div>
         <label class="search-label">
-          <span data-en="Search publications" data-zh="搜索论文" class="sr-only">Search publications</span>
+          <span data-en="Search publications" data-zh="搜索成果" class="sr-only">Search publications</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg>
           <input id="publication-search" type="search" placeholder="Search title, author, venue or year" aria-label="Search publications" />
         </label>
@@ -61,12 +62,12 @@
       <nav id="pub-index" class="pub-index" aria-label="Jump to section"></nav>
       <div id="publication-list" class="publication-list"></div>
       <div id="empty-state" class="empty-state" hidden>
-        <h2 data-en="No matching papers" data-zh="没有匹配的论文">No matching papers</h2>
+        <h2 data-en="No matching publications" data-zh="没有匹配的成果">No matching publications</h2>
         <p data-en="Try another title, author, venue or year." data-zh="试试其他标题、作者、会议或年份。">Try another title, author, venue or year.</p>
         <button data-en="Clear search" data-zh="清除搜索" id="reset-filters" class="button secondary">Clear search</button>
       </div>
       <p class="publication-note">
-        <span data-en="This list covers papers since 2022 with Prof. Fan Liu as first or corresponding author, together with papers by current members that our projects build on. For his full record, see" data-zh="本页收录 2022 年以来刘帆教授为第一作者或通讯作者的论文，以及研究项目所依托的组内成员论文。完整记录请见">This list covers papers since 2022 with Prof. Fan Liu as first or corresponding author, together with papers by current members that our projects build on. For his full record, see</span>
+        <span data-en="Representative works are selected from publications since 2022 with Prof. Fan Liu as first or corresponding author. Joint works with current members are included regardless of his author position; reports and books are labeled separately. For his full record, see" data-zh="导师代表作从 2022 年以来刘帆教授为第一作者或通讯作者的成果中选取；与在读成员共同署名的工作不受作者排序限制。技术报告与专著单独标注。完整记录请见">Representative works are selected from publications since 2022 with Prof. Fan Liu as first or corresponding author. Joint works with current members are included regardless of his author position; reports and books are labeled separately. For his full record, see</span>
         <a data-en="his homepage ↗" data-zh="个人主页 ↗" href="https://liufancs.github.io/" class="inline-link" target="_blank" rel="noopener noreferrer">his homepage ↗</a>
         <span data-en="and" data-zh="和">and</span>
         <a href="https://orcid.org/0000-0002-4547-3982" class="inline-link" target="_blank" rel="noopener noreferrer">ORCID ↗</a>
