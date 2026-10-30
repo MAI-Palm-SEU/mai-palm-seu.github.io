@@ -175,16 +175,14 @@ const joinCta = `      <section class="section cta-section">
       </section>`;
 
 /* ---------- Home ---------- */
+// Curated major research outcomes only; personnel changes and routine service are excluded.
 const NEWS = [
-  ["2026-10", "Oct 2026", "The group (team MAI) wins first place in the MetaFine Open Competition at the RoboFineMani Workshop, CoRL 2026; the technical report is on arXiv.", "团队（MAI）获 CoRL 2026 RoboFineMani Workshop MetaFine 公开赛第一名，技术报告已发布于 arXiv。", ["Project →", "所属项目 →", "project.html?id=embodied-intelligence"]],
-  ["2026-10", "Oct 2026", "Yueqing Xing, Yukai Wu and Zhiyu Zeng join as master's students of the 2027 intake; undergraduate students Yixuan Zhang, Xintong Lu, Xinyi Li and Haoran Jing and research interns Wenxiang Sun (Nanjing Agricultural University) and Bingzong Liu (Xidian University) join the group.", "邢越卿、吴钰恺、曾沚玉作为 2027 级硕士生加入；本科生张奕轩、卢欣童、李欣怡、景浩然，科研实习生孙文翔（南京农业大学）、刘秉宗（西安电子科技大学）加入课题组。", ["People →", "查看团队 →", "people.html#masters"]],
-  ["2026-08", "Aug 2026", "Yang Tian receives a Student Travel Award for ACM MM 2026.", "田阳获 ACM MM 2026 学生旅行资助。", ["Source ↗", "来源 ↗", "https://tyangjn.github.io/", true]],
-  ["2026-08", "Aug 2026", "NMVM, co-authored by Enhao Cheng, appears at KDD 2026.", "程恩浩与合作者的 NMVM 发表于 KDD 2026。", ["Paper ↗", "论文 ↗", "https://doi.org/10.1145/3770855.3817827", true]],
+  ["2026-10", "Oct 2026", "Our team wins first place in the MetaFine Open Competition at CoRL 2026.", "团队获 CoRL 2026 MetaFine 公开赛第一名。", ["Project →", "所属项目 →", "project.html?id=embodied-intelligence"]],
+  ["2026-08", "Aug 2026", "NMVM is published at KDD 2026.", "NMVM 发表于 KDD 2026。", ["Paper ↗", "论文 ↗", "https://doi.org/10.1145/3770855.3817827", true]],
   ["2026-07", "Jul 2026", "MM-ContextFold and FIG are accepted as Oral presentations at ACM MM 2026.", "MM-ContextFold 与 FIG 被 ACM MM 2026 录用为 Oral。", ["Project →", "所属项目 →", "project.html?id=autonomous-agents"]],
-  ["2026-07", "Jul 2026", "The ACM TOMM special issue on multimodal video understanding and analysis with foundation models, co-edited by Prof. Fan Liu, is published.", "刘帆教授参与客座编辑的 ACM TOMM 专刊（基础模型驱动的多模态视频理解与分析）出版。", ["Source ↗", "来源 ↗", "https://doi.org/10.1145/3801571", true]],
-  ["2025-07", "Jul 2025", "CoRe-MMRAG appears in the ACL 2025 main conference proceedings.", "CoRe-MMRAG 发表于 ACL 2025 主会。", ["Project →", "所属项目 →", "project.html?id=multimodal-models"]],
+  ["2025-07", "Jul 2025", "CoRe-MMRAG is published in the ACL 2025 main conference proceedings.", "CoRe-MMRAG 发表于 ACL 2025 主会。", ["Project →", "所属项目 →", "project.html?id=multimodal-models"]],
 ];
-const news = NEWS.map(
+const news = NEWS.filter(([date]) => MODEL.isRecentNews(date)).map(
   ([dt, label, en, zh, [len, lzh, href, isExt]]) => `          <article>
             ${T("time", label, dt.replace("-", " 年 ").replace(/ 0?(\d+)$/, " $1 月"), `datetime="${dt}"`)}
             <p>${T("span", en, zh)} ${T("a", len, lzh, `href="${href}" class="inline-link"${isExt ? " " + ext : ""}`)}</p>
@@ -230,7 +228,7 @@ ${pillars}
           <div class="card-grid three" id="featured-projects" data-limit="3"></div>
         </div>
       </section>
-      <section class="section alt" id="news">
+      <section class="section alt" id="news"${news ? "" : " hidden"}>
         <div class="container news-grid">
           <div class="section-head">
             <div>

@@ -28,6 +28,16 @@
       ...directions.flatMap((topic) => [topic.en, topic.zh]), ...(paper.tags || []).flat()].join(" "));
     return tokens.every((token) => haystack.includes(token));
   }
+  // News is dated by month: include this month and the preceding 23 months in China time.
+  function isRecentNews(value, now = new Date()) {
+    if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(value)) return false;
+    const parts = new Intl.DateTimeFormat("en", { timeZone: "Asia/Shanghai", year: "numeric", month: "numeric" }).formatToParts(now);
+    const year = Number(parts.find((part) => part.type === "year").value);
+    const month = Number(parts.find((part) => part.type === "month").value);
+    const [newsYear, newsMonth] = value.split("-").map(Number);
+    const age = (year - newsYear) * 12 + month - newsMonth;
+    return age >= 0 && age < 24;
+  }
   function workCounts(papers) {
     return papers.reduce((counts, paper) => {
       counts[paper.kind || "paper"] += 1;
@@ -70,5 +80,5 @@
     }
     return errors;
   }
-  return { projectPapers, projectOfPaper, projectTopics, authorMembers, matches, workCounts, validate };
+  return { projectPapers, projectOfPaper, projectTopics, authorMembers, matches, isRecentNews, workCounts, validate };
 });

@@ -33,6 +33,13 @@
   // Old topic ids, kept so earlier links still land in the right place.
   const legacyTopics = { multimodal: "perception", foundation: "reasoning", autonomous: "decision", applications: "perception" };
 
+  // Keep the time window current even when the static site has not been rebuilt.
+  if (page === "index") {
+    const news = $$("#news .news-list article");
+    news.forEach((item) => { item.hidden = !model.isRecentNews(item.querySelector("time").dateTime); });
+    $("#news").hidden = !news.some((item) => !item.hidden);
+  }
+
   /* ---------- Papers ---------- */
   function authorHtml(p) {
     return p.authors

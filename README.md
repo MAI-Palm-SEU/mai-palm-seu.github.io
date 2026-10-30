@@ -46,6 +46,7 @@ node tools/build-pages.js
 - **加论文**：在 `content.js` 的 `papers` 里按年份插入一条，`topic` 填 `perception` / `reasoning` / `decision`，`group` 填该主题下的小类 id（见 `topics[].groups`）；再把论文 id 加到某个项目的某个子方向（`projects[].themes[].papers`）里。可用 `relatedTopics` 记录交叉方向；`kind` 为 `paper` / `report` / `book`。每条成果只属于一个项目，主方向只计数一次。运行生成命令，确保研究页配图和精选成果同步更新。
 - **改项目**：`content.js` 的 `projects` 里每个项目有 `themes`（子方向：名称、一句话、论文 id）和 `members`（参与成员的 id）。没有成果的课题会显示「研究进行中」，并可通过 `topics` 标明归属。项目的方向标签由关联成果及在研课题推导，不能另填一套 `layers`。修改后运行生成命令。
 - **改动态、「探索课题」和其他页面文案**：改 `tools/build-pages.js` 里的 `NEWS`、`MORE_DIRECTIONS` 等，再运行上面的命令。中英文分别写在每一项的英文和中文两个位置。
+- **News 收录范围**：仅展示含当月在内最近 24 个月的重要科研成果，如重大竞赛获奖、代表性论文录用或发表；不展示人员加入与毕业、旅行资助、常规学术服务。`NEWS` 人工精选内容，页面生成和访问时都会按北京时间过滤过期或未来条目；没有符合条件的动态时隐藏整个模块。
 
 ### 分类与收录规则
 
