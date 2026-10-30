@@ -89,7 +89,7 @@ window.MAI_CONTENT = {
       photo: "assets/people/wenxiang-sun.jpg",
       links: { homepage: "https://swx0v0.github.io/", github: "https://github.com/swx0v0" },
     },
-    { id: "bingzong-liu", en: "Bingzong Liu", zh: "刘秉宗", role: "Intern", since: 2026, institution: ["Xidian University", "西安电子科技大学"], photo: "assets/people/bingzong-liu.jpg", links: { github: "https://github.com/BestSelby" } },
+    { id: "bingzong-liu", en: "Bingzong Liu", zh: "刘秉宗", role: "Intern", since: 2026, institution: ["Xidian University", "西安电子科技大学"], interests: ["Medical imaging · Detection", "医学影像 · 目标检测"], photo: "assets/people/bingzong-liu.jpg", links: { github: "https://github.com/BestSelby" } },
     // Alumni.
     {
       id: "zhenyang-li", en: "Zhenyang Li", zh: "李振阳", role: "Alumni",
