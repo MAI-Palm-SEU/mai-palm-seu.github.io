@@ -118,3 +118,4 @@ Alumni names are highlighted in publication author lists together with current m
 
 **More directions (2026-10-30).** The "More directions" section on the projects page lists frontier topics the group wants to explore (AI for Science, agentic reinforcement learning, multimodal reasoning, unified understanding and generation, world models, self-evolving agents). They were drafted from the official research statement (applications to scientific discovery and research assistance; agents and embodied intelligence) and members' stated interests, at the group's request; they are interests, not projects, and no papers are claimed.
 - 2026-10-30: 刘秉宗's portrait was supplied by the group, which also confirmed the spelling Bingzong Liu.
+- 2026-10-30: 刘秉宗's GitHub https://github.com/BestSelby was supplied by the group (the profile has no public name or bio).
