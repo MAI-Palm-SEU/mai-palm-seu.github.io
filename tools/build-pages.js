@@ -396,7 +396,7 @@ page("publications.html", {
   title: "Publications · MAI Lab",
   active: "publications",
   bodyPage: "publications",
-  main: `${pageHero(["Publications", "研究成果"], ["Selected work by Prof. Fan Liu, together with publications co-authored with current group members. Browse by research direction or year; group members and alumni are highlighted in the author lists.", "展示刘帆教授的代表工作，以及与在读成员共同署名的成果。可按研究方向或年份浏览，作者列表突出显示课题组成员与已毕业成员。"])}
+  main: `${pageHero(["Publications", "研究成果"], ["Selected work by Prof. Fan Liu, together with publications co-authored with current group members. Browse by research direction or year; group members are highlighted in the author lists.", "展示刘帆教授的代表工作，以及与在读成员共同署名的成果。可按研究方向或年份浏览，作者列表突出显示课题组成员。"])}
       <div class="container">
       <div class="pub-toolbar">
         <div class="view-switch" role="group" aria-label="Organize publications">
@@ -519,12 +519,12 @@ ${byRole("Undergrad").map(personCard).join("\n")}
 ${byRole("Intern").map(personCard).join("\n")}
         </div>
       </section>
-      <section class="people-section" id="alumni">
+      ${byRole("Alumni").length ? `<section class="people-section" id="alumni">
         <div class="section-head"><div>${T("h2", "Alumni", "已毕业成员", 'class="display"')}</div></div>
         <div class="people-grid">
 ${byRole("Alumni").map(personCard).join("\n")}
         </div>
-      </section>
+      </section>` : ""}
       </div>`,
 });
 

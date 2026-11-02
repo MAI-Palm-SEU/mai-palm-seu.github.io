@@ -17,7 +17,7 @@ assert.equal(model.projectOfPaper("nmvm", content).id, "multimodal-models", "The
 assert.ok(paper("nmvm").authors.includes("Enhao Cheng") && paper("nmvm").authors.includes("Fan Liu"), "Retain the student/advisor joint work");
 assert.deepEqual(model.workCounts(content.papers), { paper: 13, report: 1, book: 1 }, "Reports and the monograph must not count as papers");
 
-for (const [english, chinese] of [["Huilin Chen", "陈慧临"], ["Zhenyang Li", "李振阳"], ["Enhao Cheng", "程恩浩"]]) {
+for (const [english, chinese] of [["Huilin Chen", "陈慧临"], ["Enhao Cheng", "程恩浩"]]) {
   const ids = (name) => content.papers.filter((item) => model.matches(item, name, content)).map((item) => item.id);
   assert.ok(ids(english).length, `Missing publications for ${english}`);
   assert.deepEqual(ids(chinese), ids(english), `Chinese search must match the actual authors for ${chinese}`);

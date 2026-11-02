@@ -47,6 +47,13 @@ window.MAI_CONTENT = {
       links: { homepage: "https://tyangjn.github.io/", scholar: "https://scholar.google.com/citations?user=4n4O7YAAAAAJ", github: "https://github.com/TyangJN" },
     },
     {
+      id: "huilin-chen", en: "Huilin Chen", zh: "陈慧临", role: "PhD",
+      institution: ["Joint training · HFUT & NUS", "联合培养 · 合肥工业大学 & 新加坡国立大学"],
+      interests: ["Multimedia recommendation · Personalized agents", "多媒体推荐 · 个性化智能体"],
+      photo: "assets/people/huilin-chen.jpg",
+      links: { homepage: "https://huilinchenjn.github.io/", github: "https://github.com/HuilinChenJN", scholar: "https://scholar.google.com/citations?user=vWoJdWEAAAAJ" },
+    },
+    {
       id: "guotao-chen", en: "Guotao Chen", zh: "陈国涛", role: "Master", since: 2025,
       institution: ["Southeast University", "东南大学"],
       interests: ["LLMs · Embodied AI", "大语言模型 · 具身智能"],
@@ -99,23 +106,6 @@ window.MAI_CONTENT = {
       links: { homepage: "https://swx0v0.github.io/", github: "https://github.com/swx0v0" },
     },
     { id: "bingzong-liu", en: "Bingzong Liu", zh: "刘秉宗", role: "Intern", since: 2026, institution: ["Xidian University", "西安电子科技大学"], interests: ["Medical imaging · Detection", "医学影像 · 目标检测"], photo: "assets/people/bingzong-liu.jpg", links: { github: "https://github.com/BestSelby" } },
-    // Alumni.
-    {
-      id: "zhenyang-li", en: "Zhenyang Li", zh: "李振阳", role: "Alumni",
-      degree: ["Ph.D. (Shandong University), 2024", "山东大学博士，2024"],
-      now: ["Research Fellow @ CityU", "香港城市大学 Research Fellow"],
-      photo: "assets/people/zhenyang-li.jpg",
-      links: { homepage: "https://sdlzy.github.io/", scholar: "https://scholar.google.com/citations?user=1y3RxHMAAAAJ" },
-    },
-    {
-      id: "huilin-chen", en: "Huilin Chen", zh: "陈慧临", role: "Alumni",
-      degree: null,
-      now: ["Ph.D. student @ HFUT", "合肥工业大学博士生"],
-      note: ["Ph.D. student at Hefei University of Technology since 2023 (supervisors Prof. Zhiyong Cheng and Dr. Fan Liu); visiting Ph.D. student at NUS", "2023 年起在合肥工业大学读博（导师程志勇教授、刘帆老师）；现于新加坡国立大学访问"],
-      interests: ["Multimedia recommendation · Personalized agents", "多媒体推荐 · 个性化智能体"],
-      photo: "assets/people/huilin-chen.jpg",
-      links: { homepage: "https://huilinchenjn.github.io/", github: "https://github.com/HuilinChenJN", scholar: "https://scholar.google.com/citations?user=vWoJdWEAAAAJ" },
-    },
   ],
 
   topics: [
