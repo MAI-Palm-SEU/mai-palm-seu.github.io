@@ -1,16 +1,16 @@
-# MAI Lab
+# MAI Group
 
 **Multimodal Autonomous Intelligence**
 
 PALM Lab · Southeast University
 
-MAI Lab 官方网站，展示研究方向、项目、成果、团队和招生信息，支持中英文切换。
+MAI Group 官方网站，展示研究方向、成果、团队、组内活动和招生信息，支持中英文切换。
 
 [访问官网](https://mai-palm-seu.github.io/) · [维护指南](docs/MAINTENANCE.md)
 
 ## 内容更新
 
-- 成员、研究方向、项目和成果：[content.js](content.js)
+- 成员、研究方向、成果和组内活动：[content.js](content.js)
 - 首页动态与页面文案：[tools/build-pages.js](tools/build-pages.js)
 - 样式与素材：[style.css](style.css)、[assets/](assets/)
 

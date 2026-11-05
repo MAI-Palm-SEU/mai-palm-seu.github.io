@@ -4,7 +4,9 @@ Checked on **2026-10-27**; the structure revision below was checked on **2026-10
 
 ## Group identity
 
-Provided directly by the user: MAI Group; Multimodal Autonomous Intelligence; @ PALM Lab, Southeast University; principal investigator Fan Liu (刘帆).
+MAI Group (Multimodal Autonomous Intelligence) is a research group within PALM Lab at Southeast University, led by Prof. Fan Liu (刘帆).
+
+The homepage follows the three research fields in [SEU's faculty profile](https://cs.seu.edu.cn/liufan/main.htm) and draws on [Prof. Liu's publications and research interests](https://liufancs.github.io/). The group frames multimodality as the full range of available signals and autonomous intelligence as goal-directed reasoning and action. The retrieval and embodied manipulation examples draw on [MM-ContextFold](https://arxiv.org/abs/2609.23121) and the [MetaFine report](https://arxiv.org/abs/2610.36765). The school's English name follows its [official English site](https://cs.seu.edu.cn/csen/).
 
 ## Faculty, research, and opportunities
 

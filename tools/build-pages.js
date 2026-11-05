@@ -1,6 +1,6 @@
-// Writes the static HTML pages of the MAI Lab site from content.js.
+// Writes the static HTML pages of the MAI Group site from content.js.
 // Usage, from the repository root: node tools/build-pages.js   (or: node build-pages.js <repo dir>)
-// Edit this file, not the generated HTML: running it overwrites all seven pages.
+// Edit this file, not the generated HTML: running it overwrites the generated pages.
 const fs = require("fs");
 const path = require("path");
 const out = path.resolve(process.argv[2] || path.join(__dirname, ".."));
@@ -29,7 +29,7 @@ const ICONS = {
   scholar: ["Google Scholar", '<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/>'],
   github: ["GitHub", '<path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.03c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.76-1.34-1.76-1.08-.75.09-.73.09-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/>'],
   orcid: ["ORCID", '<circle cx="12" cy="12" r="11"/><text x="12" y="16.2" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Arial, sans-serif" fill="#fff">iD</text>'],
-  profile: ["Faculty profile", '<path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/>'],
+  profile: ["SEU profile", '<path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/>'],
   email: ["Email", '<path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>'],
 };
 const iconLinks = (links = {}) => {
@@ -51,9 +51,9 @@ const ROLE_LABEL = { Faculty: ["Faculty", "教师"], PhD: ["PhD student", "博�
 const NAV = [
   ["index", "Home", "首页", "index.html"],
   ["research", "Research", "研究方向", "research.html"],
-  ["projects", "Projects", "研究项目", "projects.html"],
   ["publications", "Publications", "研究成果", "publications.html"],
   ["people", "People", "团队", "people.html"],
+  ["activities", "Activities", "组内活动", "activities.html"],
   ["join", "Join us", "加入我们", "join.html"],
 ];
 
@@ -84,7 +84,7 @@ function header(active) {
   return `    ${T("a", "Skip to content", "跳转到正文", 'href="#main" class="skip-link"')}
     <header class="site-header">
       <div class="container header-inner">
-        <a href="index.html" class="brand" aria-label="MAI Lab home">MAI Lab</a>
+        <a href="index.html" class="brand" aria-label="MAI Group home">MAI Group</a>
         <nav class="main-nav" id="main-nav" aria-label="Main navigation">
           ${nav}
         </nav>
@@ -110,13 +110,13 @@ const footer = `    <footer class="site-footer">
         </div>
         <div class="footer-links">
           ${T("a", "PALM Lab ↗", "PALM 实验室 ↗", `href="https://palm.seu.edu.cn/" class="text-link" ${ext}`)}
-          ${T("a", "School website ↗", "学院官网 ↗", `href="https://cs.seu.edu.cn/" class="text-link" ${ext}`)}
-          ${T("a", "University website ↗", "学校官网 ↗", `href="https://www.seu.edu.cn/" class="text-link" ${ext}`)}
+          ${T("a", "School of Computer Science and Engineering ↗", "东南大学计算机科学与工程学院 ↗", `href="https://cs.seu.edu.cn/csen/" data-url-en="https://cs.seu.edu.cn/csen/" data-url-zh="https://cs.seu.edu.cn/" class="text-link" ${ext}`)}
+          ${T("a", "Southeast University ↗", "东南大学 ↗", `href="https://www.seu.edu.cn/english/" data-url-en="https://www.seu.edu.cn/english/" data-url-zh="https://www.seu.edu.cn/" class="text-link" ${ext}`)}
           ${T("a", "Prospective students →", "申请与交流 →", 'href="join.html" class="text-link"')}
         </div>
       </div>
       <div class="container footer-bottom">
-        <p>© <span id="current-year">2026</span> MAI Lab</p>
+        <p>© <span id="current-year">2026</span> MAI Group</p>
         ${T("a", "Back to top ↑", "返回顶部 ↑", 'href="#"')}
       </div>
     </footer>
@@ -133,7 +133,7 @@ const footer = `    <footer class="site-footer">
 </html>
 `;
 
-const DESC = "Multimodal Autonomous Intelligence at PALM Lab, Southeast University. Research, projects, publications, people, and opportunities with Prof. Fan Liu.";
+const DESC = "MAI Group studies multimodal perception, semantic reasoning and autonomous decision-making within PALM Lab at Southeast University.";
 function page(file, { title, active, bodyPage, main }) {
   const html = `${head(title, DESC)}
   <body data-page="${bodyPage}">
@@ -177,10 +177,10 @@ const joinCta = `      <section class="section cta-section">
 /* ---------- Home ---------- */
 // Curated major research outcomes only; personnel changes and routine service are excluded.
 const NEWS = [
-  ["2026-10", "Oct 2026", "Our team wins first place in the MetaFine Open Competition at CoRL 2026.", "团队获 CoRL 2026 MetaFine 公开赛第一名。", ["Project →", "所属项目 →", "project.html?id=embodied-intelligence"]],
-  ["2026-08", "Aug 2026", "NMVM is published at KDD 2026.", "NMVM 发表于 KDD 2026。", ["Paper ↗", "论文 ↗", "https://doi.org/10.1145/3770855.3817827", true]],
-  ["2026-07", "Jul 2026", "MM-ContextFold and FIG are accepted as Oral presentations at ACM MM 2026.", "MM-ContextFold 与 FIG 被 ACM MM 2026 录用为 Oral。", ["Project →", "所属项目 →", "project.html?id=autonomous-agents"]],
-  ["2025-07", "Jul 2025", "CoRe-MMRAG is published in the ACL 2025 main conference proceedings.", "CoRe-MMRAG 发表于 ACL 2025 主会。", ["Project →", "所属项目 →", "project.html?id=multimodal-models"]],
+  ["2026-10", "Oct 2026", "Our team wins first place in the MetaFine Open Competition at CoRL 2026.", "团队获 CoRL 2026 MetaFine 公开赛第一名。", ["Technical report ↗", "技术报告 ↗", paperById("metafine").paper, true]],
+  ["2026-08", "Aug 2026", "NMVM is published at KDD 2026.", "NMVM 发表于 KDD 2026。", ["Paper ↗", "论文 ↗", paperById("nmvm").paper, true]],
+  ["2026-07", "Jul 2026", "MM-ContextFold and FIG are accepted for oral presentation at ACM MM 2026.", "MM-ContextFold 与 FIG 被 ACM MM 2026 录用为口头报告。", ["Both papers →", "两篇论文 →", "publications.html?q=ACM%20MM%202026"]],
+  ["2025-07", "Jul 2025", "CoRe-MMRAG is published in the ACL 2025 main conference proceedings.", "CoRe-MMRAG 发表于 ACL 2025 主会。", ["Paper ↗", "论文 ↗", paperById("core").paper, true]],
 ];
 const news = NEWS.filter(([date]) => MODEL.isRecentNews(date)).map(
   ([dt, label, en, zh, [len, lzh, href, isExt]]) => `          <article>
@@ -191,10 +191,10 @@ const news = NEWS.filter(([date]) => MODEL.isRecentNews(date)).map(
 
 const preview = MEMBERS.filter((m) => m.role !== "Alumni")
   .map((m) => {
-    const label = ROLE_LABEL[m.role];
-    const sub = m.intake ? [`${label[0]} · incoming ${m.intake}`, `${m.intake} 级${label[1]}（待入学）`] : label;
+    const label = m.title || ROLE_LABEL[m.role];
+    const sub = m.intake ? [`Incoming ${label[0].toLowerCase()} (${m.intake})`, `${m.intake} 级${label[1]}（待入学）`] : label;
     return `          <a href="people.html#${m.id}" class="person-preview">
-            ${m.photo ? `<img src="${m.photo}" alt="${m.en}" loading="lazy" decoding="async" />` : `<span class="mini-placeholder" aria-hidden="true">${initials(m.en)}</span>`}
+            ${m.photo ? `<img src="${m.photo}" alt="" loading="lazy" decoding="async" />` : `<span class="mini-placeholder" aria-hidden="true">${initials(m.en)}</span>`}
             ${T("h3", m.en, m.zh)}
             ${T("p", ...sub)}
           </a>`;
@@ -202,30 +202,28 @@ const preview = MEMBERS.filter((m) => m.role !== "Alumni")
   .join("\n");
 
 page("index.html", {
-  title: "Multimodal Autonomous Intelligence · MAI Lab",
+  title: "Multimodal Autonomous Intelligence · MAI Group",
   active: "index",
   bodyPage: "index",
   main: `      <section class="hero">
         <div class="container hero-inner">
           ${T("h1", "Multimodal Autonomous Intelligence", "多模态自主智能", 'class="display"')}
-          <p class="hero-lead">${T("span", "A research group at PALM Lab, Southeast University, led by", "东南大学 PALM 实验室课题组，由")} ${T("a", "Prof. Fan Liu", "刘帆教授", 'href="people.html#fan-liu"')}${T("span", ", studying how intelligent systems perceive, reason and decide in complex, open environments.", "负责，研究智能系统如何在复杂开放环境中感知、推理与决策。")}</p>
+          ${T("p", "Our research brings together multimodal understanding, foundation models and autonomous intelligence. We study how agents can make sense of complex, open environments using the full range of signals available to them, from language and vision to human behavior and feedback from their own actions. Our goal is for agents to reason from this evidence and choose how to act, whether a retrieval agent is deciding what information to seek next or an embodied agent is adjusting its grasp.", "我们研究多模态理解、基础模型与自主智能。在复杂开放环境中，语言、视觉、人的行为和行动反馈，都可能为智能体理解当前情境提供线索。我们从这样的全模态视角研究智能体如何综合证据进行推理，围绕目标自主决定下一步行动，例如在多步检索中判断还需寻找哪些信息，或在具身操作中根据反馈调整抓取动作。", 'class="hero-lead"')}
+          <p class="group-affiliation">${T("span", "We are a research group within PALM Lab at Southeast University, led by ", "课题组隶属于东南大学 PALM 实验室，由")}${T("a", "Prof. Fan Liu", "刘帆教授", 'href="people.html#fan-liu"')}${T("span", ".", "负责。")}</p>
           <div class="hero-actions">
-            ${T("a", "Projects →", "研究项目 →", 'href="projects.html" class="button"')}
+            ${T("a", "Research →", "研究方向 →", 'href="research.html" class="button"')}
             ${T("a", "Publications", "研究成果", 'href="publications.html" class="button secondary"')}
           </div>
 ${pillars}
         </div>
       </section>
-      <section class="section" id="projects">
-        <div class="container">
-          <div class="section-head">
-            <div>
-
-              ${T("h2", "Selected projects", "代表项目", 'class="display"')}
-            </div>
-            ${T("a", "All projects →", "全部项目 →", 'href="projects.html" class="text-link"')}
+      <section class="activity-brief" id="activities">
+        <div class="container section-head">
+          <div>
+            ${T("h2", "Group activities", "组内活动", 'class="display"')}
+            ${T("p", "Group meetings, conferences and visits.", "组会、学术会议与交流访问。", 'class="lead"')}
           </div>
-          <div class="card-grid three" id="featured-projects" data-limit="3"></div>
+          ${T("a", "View activities →", "查看活动 →", 'href="activities.html" class="text-link"')}
         </div>
       </section>
       <section class="section alt" id="news"${news ? "" : " hidden"}>
@@ -246,9 +244,9 @@ ${news}
           <div class="section-head">
             <div>
 
-              ${T("h2", "The group", "团队成员", 'class="display"')}
+              ${T("h2", "Group members", "团队成员", 'class="display"')}
             </div>
-            ${T("a", "Meet everyone →", "查看团队 →", 'href="people.html" class="text-link"')}
+            ${T("a", "View profiles →", "成员详情 →", 'href="people.html" class="text-link"')}
           </div>
           <div class="people-preview">
 ${preview}
@@ -262,7 +260,6 @@ ${joinCta}`,
 // Direction names, descriptions, figures and selected papers share the same records.
 const areas = TOPICS.map((topic) => {
   const paper = paperById(topic.figure.paper);
-  const project = MODEL.projectOfPaper(paper.id, CONTENT);
   return `        <section class="area" id="${topic.id}">
           <span id="${topic.alias}" class="anchor-alias"></span>
           ${topic.id === "perception" ? '<span id="applications" class="anchor-alias"></span>' : ""}
@@ -271,13 +268,11 @@ const areas = TOPICS.map((topic) => {
             ${T("p", ...topic.question, 'class="area-question"')}
             ${T("p", ...topic.description)}
             ${T("p", ...topic.focus, 'class="area-focus"')}
-            ${T("h3", "Related projects", "相关项目", 'class="minor-heading"')}
-            <ul class="plain-list" data-layer-projects="${topic.id}"></ul>
             ${T("a", "All publications in this direction →", "该方向全部成果 →", `href="publications.html#${topic.id}" class="text-link"`)}
           </div>
           <div class="area-results">
             <figure class="card area-figure">
-              <a class="frame" href="project.html?id=${project.id}" aria-label="${esc(paper.short)}"><img src="${topic.figure.src}" alt="${esc(topic.figure.caption[0])}" loading="lazy" decoding="async" /></a>
+              <a class="frame" href="publications.html#paper-${paper.id}" aria-label="${esc(paper.title)}"><img src="${topic.figure.src}" alt="${esc(topic.figure.caption[0])}" loading="lazy" decoding="async" /></a>
               ${T("figcaption", ...topic.figure.caption)}
             </figure>
             ${T("h3", "Selected publications", "代表成果", 'class="minor-heading"')}
@@ -286,17 +281,12 @@ const areas = TOPICS.map((topic) => {
         </section>`;
 }).join("\n");
 
-// Publication milestones, not inferred starting dates for the research directions.
-const timeline = [["dmrl"], ["sgfd"], ["hoi-lvlm", "core"], ["contextfold", "fig", "metafine"]].map((ids) => {
-  const works = ids.map(paperById);
-  return `<li class="card"><span class="milestone-year">${works[0].year}</span>${works.map((paper) => `<p><a href="${paper.paper}" ${ext}>${esc(paper.short)}</a></p>`).join("")}</li>`;
-}).join("\n");
 const researchSteps = `          <ol class="steps">
 ${TOPICS.map((topic) => `            <li><a class="card" href="#${topic.id}">${T("h3", topic.en, topic.zh, 'class="display"')}${T("p", ...topic.intro)}</a></li>`).join("\n")}
           </ol>`;
 
 page("research.html", {
-  title: "Research · MAI Lab",
+  title: "Research · MAI Group",
   active: "research",
   bodyPage: "research",
   main: `${pageHero(["Research", "研究方向"], ["Our research is organized around three connected directions: perception and understanding, semantic reasoning, and autonomous decision-making.", "我们的研究围绕三个相互支撑的方向展开：感知与理解、语义推理、自主决策。"])}
@@ -314,20 +304,6 @@ ${researchSteps}
             <dl><div>${T("dt", "Methods", "方法")}${T("dd", "Multimodal learning · Language models · Agent learning", "多模态学习 · 语言模型 · 智能体学习")}</div></dl>
             <dl><div>${T("dt", "Applications", "应用")}${T("dd", "Retrieval & recommendation · Robot manipulation", "信息检索与推荐 · 机器人操作")}</div></dl>
           </div>
-          ${T("p", "These directions inform one another: representations support reasoning, reasoning guides decisions, and actions provide new observations. Individual projects may address one direction or connect several.", "表征为推理提供基础，推理为决策提供依据，行动带来新的观察。具体项目可以聚焦其中一个问题，也可以连接多个方向。", 'class="framework-note"')}
-        </div>
-      </section>
-      <section class="section alt">
-        <div class="container">
-          <div class="section-head">
-            <div>
-
-              ${T("h2", "Selected milestones", "代表成果进展", 'class="display"')}
-            </div>
-          </div>
-          <ol class="timeline">
-${timeline}
-          </ol>
         </div>
       </section>
       <div class="container">
@@ -335,65 +311,57 @@ ${areas}
       </div>`,
 });
 
-/* ---------- Projects ---------- */
-// Frontier topics the group follows and wants to explore; not yet projects with papers.
-const MORE_DIRECTIONS = [
-  ["AI for Science", "科研智能", "Agents that read the literature, form hypotheses and run analyses, assisting scientific discovery and everyday research.", "能阅读文献、提出假设、开展分析的智能体，辅助科学发现与日常科研。"],
-  ["Agentic reinforcement learning", "智能体强化学习", "Training agents with reinforcement learning to plan, call tools and learn from feedback over long tasks.", "用强化学习训练智能体在长程任务中规划、调用工具，并从反馈中学习。"],
-  ["Multimodal reasoning", "多模态推理", "Step-by-step reasoning over images, video and diagrams, including thinking with images.", "在图像、视频与图表上逐步推理，包括「用图像思考」。"],
-  ["Unified understanding and generation", "理解与生成统一", "One model that both understands and generates images, video and text, and keeps what it generates true to fact.", "同一个模型既能理解也能生成图像、视频与文本，并让生成内容符合事实。"],
-  ["World models", "世界模型", "Models that predict how the world changes under actions, for planning, simulation and embodied agents.", "预测世界在行动下如何变化的模型，用于规划、仿真与具身智能体。"],
-  ["Self-evolving agents", "自我进化的智能体", "Agents that accumulate memory, skills and experience, and keep improving after deployment.", "能积累记忆、技能与经验，并在部署后持续改进的智能体。"],
-];
-const EXPLORATORY_TOPICS = [["reasoning", "decision"], ["decision"], ["reasoning"], ["perception", "reasoning"], ["perception", "decision"], ["decision"]];
-const moreDirections = MORE_DIRECTIONS.map(
-  ([en, zh, pen, pzh], index) => `            <li class="card">
-              <p class="card-tags">${EXPLORATORY_TOPICS[index].map((id) => { const topic = TOPICS.find((item) => item.id === id); return T("a", topic.en, topic.zh, `href="research.html#${id}"`); }).join(" · ")}</p>
-              ${T("h3", en, zh)}
-              ${T("p", pen, pzh)}
-            </li>`,
-).join("\n");
-page("projects.html", {
-  title: "Projects · MAI Lab",
-  active: "projects",
-  bodyPage: "projects",
-  main: `${pageHero(["Projects", "研究项目"], ["Our projects address specific problems within the three research directions. Each project brings together related topics, publications, code, data and participating members.", "研究项目围绕三个方向中的具体问题展开。每个项目汇集相关课题、论文、代码、数据与参与成员，并标明所属研究方向。"])}
-      <section class="section">
-        <div class="container">
-          <div class="card-grid two" id="project-list"></div>
-        </div>
-      </section>
-      <section class="section alt" id="more-directions">
-        <div class="container">
-          <div class="section-head"><div>${T("h2", "Exploratory topics", "探索课题", 'class="display"')}${T("p", "Within the same three directions, we are interested in the following topics. These are exploratory interests rather than completed results; we welcome students who would like to investigate them.", "以下课题仍围绕上述三个研究方向展开，属于希望探索的问题。欢迎有兴趣的同学与我们讨论具体研究计划。", 'class="lead"')}</div></div>
-          <ul class="direction-grid">
-${moreDirections}
-          </ul>
-          <p class="directions-cta">${T("a", "Interested in one of these? Join us →", "对这些方向感兴趣？欢迎加入我们 →", 'href="join.html" class="text-link"')}</p>
-        </div>
-      </section>
-      <section class="section">
-        <div class="container funding-note">
-          <div>
+/* ---------- Group activities ---------- */
+const activities = [...CONTENT.activities].sort((a, b) => b.date.localeCompare(a.date));
+function activityEntry(activity) {
+  const photos = (activity.photos || []).map(({ src, caption }) => {
+    if (!fs.existsSync(path.join(out, src))) throw new Error(`Missing activity photo: ${src}`);
+    return `<figure>
+      <img src="${esc(src)}" alt="" loading="lazy" decoding="async" />
+      ${T("figcaption", ...caption)}
+    </figure>`;
+  });
+  return `<article class="activity-entry">
+    <time datetime="${esc(activity.date)}">${esc(activity.date)}</time>
+    ${T("h2", ...activity.title)}
+    ${activity.description ? T("p", ...activity.description) : ""}
+    ${photos.length ? `<div class="activity-photos">${photos.join("\n")}</div>` : ""}
+  </article>`;
+}
 
-            ${T("h2", "Funded research", "科研项目", 'class="display"')}
-          </div>
-          ${T("p", "Prof. Fan Liu leads research projects funded by the National Natural Science Foundation of China and by major provincial science and technology programs.", "刘帆教授主持国家自然科学基金、省科技重大专项课题等科研项目。")}
-        </div>
-      </section>`,
+page("activities.html", {
+  title: "Group activities · MAI Group",
+  active: "activities",
+  bodyPage: "activities",
+  main: `${pageHero(["Group activities", "组内活动"], activities.length
+    ? ["Notes and photos from group meetings, conferences and visits.", "组会、学术会议与交流访问的记录。"]
+    : ["Notes and photos from our group meetings, conferences and visits will appear here.", "这里将陆续刊登组会、学术会议与交流访问的记录和照片。"])}
+    ${activities.length ? `<div class="container activity-list">${activities.map(activityEntry).join("\n")}</div>` : ""}`,
 });
 
-/* ---------- Project detail ---------- */
-page("project.html", {
-  title: "Project · MAI Lab",
-  active: "projects",
-  bodyPage: "project",
-  main: `      <div class="container"><div id="project-content"></div></div>`,
-});
+// Keep published bookmarks useful while the project catalogue is retired.
+for (const [file, target, label] of [
+  ["projects.html", "research.html", "Research"],
+  ["project.html", "publications.html", "Publications"],
+]) {
+  const refresh = `<meta http-equiv="refresh" content="0; url=${target}" />`;
+  const redirect = file === "project.html"
+    ? `<script>
+      const id = new URLSearchParams(location.search).get("id");
+      const ids = ${JSON.stringify(CONTENT.papers.map((paper) => paper.id))};
+      location.replace("${target}" + (ids.includes(id) ? "#paper-" + encodeURIComponent(id) : ""));
+    </script><noscript>${refresh}</noscript>`
+    : refresh;
+  fs.writeFileSync(path.join(out, file), `<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="robots" content="noindex" />
+<title>${label} · MAI Group</title><link rel="canonical" href="${target}" />${redirect}
+</head><body><a href="${target}">${label} · MAI Group</a></body></html>
+`);
+}
 
 /* ---------- Publications ---------- */
 page("publications.html", {
-  title: "Publications · MAI Lab",
+  title: "Publications · MAI Group",
   active: "publications",
   bodyPage: "publications",
   main: `${pageHero(["Publications", "研究成果"], ["Selected work by Prof. Fan Liu, together with publications co-authored with current group members. Browse by research direction or year; group members are highlighted in the author lists.", "展示刘帆教授的代表工作，以及与在读成员共同署名的成果。可按研究方向或年份浏览，作者列表突出显示课题组成员。"])}
@@ -460,13 +428,13 @@ const HONORS = [
 ];
 
 page("people.html", {
-  title: "People · MAI Lab",
+  title: "People · MAI Group",
   active: "people",
   bodyPage: "people",
-  main: `${pageHero(["People", "团队"], ["Meet the people behind our research.", "认识参与这些研究的老师与同学。"])}
+  main: `${pageHero(["People", "团队成员"])}
       <div class="container">
       <section class="people-section">
-        <div class="section-head"><div>${T("h2", "Group lead", "课题组负责人", 'class="display"')}</div></div>
+        <div class="section-head"><div>${T("h2", "Principal Investigator", "课题组负责人", 'class="display"')}</div></div>
         <article class="card faculty-profile" id="fan-liu">
           <img src="assets/fan-liu-official.png" alt="Fan Liu / 刘帆" class="faculty-portrait" loading="lazy" decoding="async" />
           <div>
@@ -474,7 +442,7 @@ page("people.html", {
               ${T("h3", "Fan Liu", "刘帆")}
               ${T("span", "刘帆", "Fan Liu")}
             </div>
-            ${T("p", "Professor · Group lead", "教授 · 课题组负责人", 'class="faculty-role"')}
+            ${T("p", ...MEMBERS.find((m) => m.id === "fan-liu").title, 'class="faculty-role"')}
             <div class="faculty-bio">
               ${T("p", "Fan Liu is a Professor and Young Chief Professor at Southeast University, with appointments in the School of Computer Science and Engineering, the School of Software and the School of Artificial Intelligence, and a doctoral supervisor. He has been selected for a national high-level young talent program and was named among the world's top 2% scientists in 2026. He received his PhD from Shandong University and was a research fellow at the National University of Singapore.", "刘帆，东南大学计算机科学与工程学院、软件学院、人工智能学院教授，青年首席教授，国家级高层次青年人才，博士生导师，入选 2026 年全球前 2% 顶尖科学家榜。博士毕业于山东大学，曾任新加坡国立大学研究员。")}
               ${T("p", "His research focuses on perception and understanding, semantic reasoning, and autonomous decision-making in complex, open environments. He has published more than 40 papers in CCF-A conferences and IEEE/ACM Transactions, and two monographs as first author.", "研究聚焦复杂开放环境中的感知与理解、语义推理和自主决策。在 CCF-A 类国际会议及 IEEE/ACM 汇刊等高水平期刊和会议发表论文 40 余篇，出版第一作者学术专著 2 部。")}
@@ -535,10 +503,10 @@ const LOOK_FOR = [
   ["A solid foundation in English and mathematics", "具备扎实的英语和数学基础"],
 ];
 page("join.html", {
-  title: "Join us · MAI Lab",
+  title: "Join us · MAI Group",
   active: "join",
   bodyPage: "join",
-  main: `${pageHero(["Join us", "加入我们"], ["If our research interests overlap with yours, we would be glad to hear from you. Our research framework and projects show what you would work on.", "如果你对我们的研究方向感兴趣，欢迎与我们交流。研究框架和研究项目两页介绍了你将参与的工作。"])}
+  main: `${pageHero(["Join us", "加入我们"], ["We welcome students and postdoctoral researchers interested in multimodal perception, reasoning and autonomous decision-making.", "欢迎对多模态感知、推理与自主决策感兴趣的同学和博士后加入课题组。"])}
       <div class="container">
       <div class="join-layout">
         <div class="opportunities">
@@ -568,7 +536,7 @@ page("join.html", {
           ${T("button", "Copy email address", "复制邮箱", 'id="copy-email" class="copy-button"')}
           <hr />
           ${T("h3", "Official information", "官方信息")}
-          ${T("a", "Current faculty notice ↗", "教师主页招生信息 ↗", `href="https://cs.seu.edu.cn/liufan/main.htm" class="text-link" ${ext}`)}
+          ${T("a", "Prof. Liu’s admissions notice ↗", "刘帆教授招生信息 ↗", `href="https://cs.seu.edu.cn/liufan/main.htm" class="text-link" ${ext}`)}
           ${T("a", "PALM admission guide ↗", "PALM 实验室申请指南 ↗", `href="https://palm.seu.edu.cn/application.html" class="text-link" ${ext}`)}
           ${T("a", "PALM application portal ↗", "PALM 实验室申请入口 ↗", `href="https://palmlab.cn/" class="text-link" ${ext}`)}
           ${T("p", "Graduate admission follows the official university and laboratory procedures.", "研究生录取遵循学校与实验室的正式流程。", 'class="contact-note"')}

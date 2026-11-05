@@ -5,16 +5,6 @@
 })(typeof window === "undefined" ? this : window, function () {
   "use strict";
   const normalize = (value) => value.normalize("NFKC").toLocaleLowerCase().trim();
-  const projectPapers = (project) => [...new Set(project.themes.flatMap((theme) => theme.papers))];
-  const projectOfPaper = (id, content) => content.projects.find((project) => projectPapers(project).includes(id));
-  function projectTopics(project, content) {
-    const ids = new Set(project.themes.flatMap((theme) => theme.topics || []));
-    for (const id of projectPapers(project)) {
-      const paper = content.papers.find((item) => item.id === id);
-      if (paper) [paper.topic, ...(paper.relatedTopics || [])].forEach((topic) => ids.add(topic));
-    }
-    return content.topics.filter((topic) => ids.has(topic.id)).map((topic) => topic.id);
-  }
   function authorMembers(paper, members) {
     const names = new Set(paper.authors.map(normalize));
     return members.filter((member) => [member.en, ...(member.aliases || [])].some((name) => names.has(normalize(name))));
@@ -52,9 +42,8 @@
       return new Set(ids);
     };
     const topics = unique(content.topics, "topic");
-    const papers = unique(content.papers, "paper");
+    unique(content.papers, "paper");
     const members = unique(content.members, "member");
-    unique(content.projects, "project");
     if ([...topics].join(",") !== "perception,reasoning,decision") errors.push("Research must use the three agreed directions in order");
     for (const paper of content.papers) {
       const topic = content.topics.find((item) => item.id === paper.topic);
@@ -64,12 +53,6 @@
       for (const id of paper.relatedTopics || []) if (!topics.has(id) || id === paper.topic) errors.push(`${paper.id}: invalid related direction ${id}`);
       if (!["paper", "report", "book"].includes(paper.kind || "paper")) errors.push(`${paper.id}: unknown work type`);
       for (const id of paper.members) if (!members.has(id)) errors.push(`${paper.id}: unknown member ${id}`);
-      if (content.projects.filter((project) => projectPapers(project).includes(paper.id)).length !== 1) errors.push(`${paper.id}: assign to exactly one project`);
-    }
-    for (const project of content.projects) {
-      for (const id of projectPapers(project)) if (!papers.has(id)) errors.push(`${project.id}: unknown paper ${id}`);
-      for (const id of project.members) if (!members.has(id)) errors.push(`${project.id}: unknown member ${id}`);
-      for (const theme of project.themes) for (const id of theme.topics || []) if (!topics.has(id)) errors.push(`${project.id}: unknown ongoing direction ${id}`);
     }
     for (const topic of content.topics) {
       if (topic.featured.length > 2) errors.push(`${topic.id}: select at most two representative works`);
@@ -80,5 +63,5 @@
     }
     return errors;
   }
-  return { projectPapers, projectOfPaper, projectTopics, authorMembers, matches, isRecentNews, workCounts, validate };
+  return { authorMembers, matches, isRecentNews, workCounts, validate };
 });
